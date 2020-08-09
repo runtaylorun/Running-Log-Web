@@ -1,15 +1,17 @@
 import React from 'react';
 import Navbar from './Components/Shared/Navbar';
 import Dashboard from './Components/Dashboard/Dashboard';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-				<Dashboard />
-			</div>
+			<Switch>
+				<Route component={Dashboard} exact path='/dashboard' />
+				<Route component={Dashboard} exact path='/calendar' />
+			</Switch>
 		</>
 	);
 }
