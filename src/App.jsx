@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Components/Shared/Navbar';
-import Dashboard from './Components/Dashboard/Dashboard';
+import CalendarPage from './Components/Dashboard/CalendarPage';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -9,8 +9,7 @@ function App() {
 		<>
 			<Navbar />
 			<Switch>
-				<Route component={Dashboard} exact path='/dashboard' />
-				<Route component={Dashboard} exact path='/calendar' />
+				<Route component={CalendarPage} exact path='/calendar' />
 			</Switch>
 		</>
 	);

@@ -1,9 +1,8 @@
 .calendarContainer {
 	background-color: white;
-	margin-top: 50px;
 	width: 75%;
 	border-radius: 10px;
-	height: 50%;
+	height: 30%;
 	box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.2);
 }
 

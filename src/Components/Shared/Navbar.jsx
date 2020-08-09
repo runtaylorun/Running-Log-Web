@@ -5,7 +5,15 @@ import classes from '../../CSS/Shared/Sidebar.module.css';
 
 const Navbar = (props) => (
 	<Sidebar
-		style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}
+		style={{
+			display: 'inline',
+			alignItems: 'center',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			position: 'static',
+			height: '100vh',
+			float: 'left',
+		}}
 		vertical
 		icon='labeled'
 		width='thin'
