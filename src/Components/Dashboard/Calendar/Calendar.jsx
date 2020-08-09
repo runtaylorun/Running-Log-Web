@@ -1,42 +1,51 @@
-import React, { useState } from 'react'
-import classes from '../../../CSS/Dashboard/Calendar.module.css'
-import CalendarHeader from './CalendarHeader'
-import CalendarBody from './CalendarBody'
-import Moment from 'moment'
-import CalendarFooter from './CalendarFooter'
+import React, { useState } from 'react';
+import classes from '../../../CSS/Dashboard/Calendar.module.css';
+import CalendarHeader from './CalendarHeader';
+import CalendarBody from './CalendarBody';
+import Moment from 'moment';
+import CalendarFooter from './CalendarFooter';
 
 const Calendar = () => {
+	const [selectedMonth, setSelectedMonth] = useState(Moment().month());
+	const [selectedYear, setSelectedYear] = useState(Moment().year());
+	const [selectedDate, setSelectedDate] = useState(Moment());
+	const [daysThisMonth, setDaysThisMonth] = useState(Moment().daysInMonth());
 
-    const [selectedMonth, setSelectedMonth] = useState(Moment().month())
-    const [selectedYear, setSelectedYear] = useState(Moment().year())
-    const [daysThisMonth, setDaysThisMonth] = useState(Moment().daysInMonth())
-    console.log(daysThisMonth)
+	const advanceMonthHandler = () => {
+		const newDate = Moment(selectedDate).add(1, 'M');
 
-    const advanceMonthHandler = () => {
-      setSelectedMonth(selectedMonth + 1)
-      setDaysThisMonth(Moment().daysInMonth(selectedMonth + 1))
-    }
+		updateDates(newDate);
+	};
 
-    const decreaseMonthHandler = () => {
-      setSelectedMonth(selectedMonth - 1)
-      setDaysThisMonth(Moment().daysInMonth(selectedMonth - 1))
-    }
+	const decreaseMonthHandler = () => {
+		const newDate = Moment(selectedDate).subtract(1, 'M');
 
-        return (
-<div className={classes.calendarContainer}>
-    <CalendarHeader 
-    selectedMonth={selectedMonth}
-    advanceMonthHandler={advanceMonthHandler}
-    decreaseMonthHandler={decreaseMonthHandler} 
-    />
-    <CalendarBody 
-    daysThisMonth={daysThisMonth} 
-    />
-    <CalendarFooter />
-  </div>
-    )
-  
+		updateDates(newDate);
+	};
 
-    }
+	const updateDates = (newDate) => {
+		setSelectedDate(newDate);
+		setSelectedMonth(Moment(newDate).month());
+		setSelectedYear(Moment(newDate).year());
+		setDaysThisMonth(Moment(newDate).daysInMonth());
+	};
 
-export default Calendar
+	return (
+		<div className={classes.calendarContainer}>
+			<CalendarHeader
+				selectedMonth={selectedMonth}
+				selectedYear={selectedYear}
+				advanceMonthHandler={advanceMonthHandler}
+				decreaseMonthHandler={decreaseMonthHandler}
+			/>
+			<CalendarBody
+				daysThisMonth={daysThisMonth}
+				startingDay={Moment([selectedYear, selectedMonth]).day()}
+				previousEndingDay={Moment(selectedDate).subtract(1, 'M').daysInMonth()}
+			/>
+			<CalendarFooter />
+		</div>
+	);
+};
+
+export default Calendar;
