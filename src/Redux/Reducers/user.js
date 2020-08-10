@@ -1,16 +1,16 @@
-import { SET_USER } from '../Actions/actionTypes';
+import { SET_USER } from '../Actions/actionTypes'
 
 const initialState = {
-	authenticated: false,
-};
+  authenticated: false
+}
 
 const userReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case SET_USER:
-			return { ...action.payload };
-		default:
-			return state;
-	}
-};
+  switch (action.type) {
+    case SET_USER:
+      return { ...action.payload }
+    default:
+      return state
+  }
+}
 
-export default userReducer;
+export default userReducer

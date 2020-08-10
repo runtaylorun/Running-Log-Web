@@ -67,3 +67,18 @@
 	margin-left: 5px;
 	margin-top: 5px;
 }
+
+.calendarFooter {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.calendarFooter h2 {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
