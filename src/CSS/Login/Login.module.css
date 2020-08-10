@@ -1,38 +1,47 @@
 .loginPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 .loginContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 40%;
-    width: 40%;
-    background-color: royalblue;
-    border-radius: 7px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 40%;
+	width: 40%;
+	background-color: royalblue;
+	border-radius: 7px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	width: 100%;
 }
 
 form label {
-    width: 100%;
+	width: 100%;
 }
 
 .inputContainer {
-    width: 35%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.inputContainer label {
+	margin-bottom: 5px;
+}
+
+.inputContainer input {
+	border: none;
+	outline: none;
+	padding: 5px;
 }

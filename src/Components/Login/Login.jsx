@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classes from '../../CSS/Login/Login.module.css';
-import UserContext from '../Context/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Login = () => {
-	const user = useContext(UserContext);
+	const history = useHistory();
+
+	const login = (event) => {
+		event.preventDefault();
+
+		history.push('/calendar');
+	};
 	return (
 		<div className={classes.loginPage}>
 			<div className={classes.loginContainer}>
@@ -18,8 +23,8 @@ const Login = () => {
 						<label>Password</label>
 						<input type='password' name='password' />
 					</div>
-					<div>
-						<button>Sign In</button>
+					<div className={classes.inputContainer}>
+						<button onClick={login}>Sign In</button>
 					</div>
 					<div>
 						<Link to='/register'>Not Registered?</Link>
