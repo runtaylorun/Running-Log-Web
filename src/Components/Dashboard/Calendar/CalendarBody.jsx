@@ -2,7 +2,7 @@ import React from 'react'
 import DayContainer from './DayContainer'
 import classes from '../../../CSS/Dashboard/Calendar.module.css'
 
-const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay }) => {
+const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay, currentMonth, currentYear }) => {
   const maxDaysOnCalendar = 42
   const generateDayContainers = () => {
     const containers = []
@@ -15,7 +15,7 @@ const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay }) => {
     }
 
     for (let i = 1; i <= daysThisMonth; i++) {
-      containers.push(<DayContainer day={i} />)
+      containers.push(<DayContainer year={currentYear} month={currentMonth} day={i} />)
     }
 
     if (daysThisMonth < 35) {

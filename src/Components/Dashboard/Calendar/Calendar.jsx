@@ -42,6 +42,8 @@ const Calendar = () => {
         daysThisMonth={daysThisMonth}
         startingDay={Moment([selectedYear, selectedMonth]).day()}
         previousEndingDay={Moment(selectedDate).subtract(1, 'M').daysInMonth()}
+        currentMonth={selectedMonth}
+        currentYear={selectedYear}
       />
       <CalendarFooter />
     </div>
