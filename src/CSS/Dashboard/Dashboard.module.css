@@ -1,0 +1,46 @@
+.dashboardPage {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.weekContainer {
+    margin-top: 20px;
+    display: 'flex';
+    flex-direction: 'column';
+    grid-column: 1 / 5;
+    justify-self: center;
+    width: 75%;
+    height: 100%;
+    border: 1px solid black
+}
+
+.weekHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-bottom: 1px solid black;
+    height: 10%;
+}
+
+.weekHeader h3 {
+    text-align: center;
+    margin: 0;
+    width: 13%;
+}
+
+.weekBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 90%;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    width: 13%;
+    border: 1px solid black;
+    height: 100%;
+}
