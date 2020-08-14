@@ -21,7 +21,7 @@ function App () {
       <Route
         {...rest}
         render={({ location }) =>
-          isUserAuthenticated ? (
+          isUserAuthenticated || sessionStorage.getItem('id') ? (
             children
           ) : (
             <Redirect

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../Redux/Actions/user'
 import classes from '../../CSS/Login/Login.module.css'
@@ -10,6 +10,13 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const history = useHistory()
+
+  useEffect(() => {
+    if (sessionStorage.getItem('id')) {
+      dispatch(setUser({ isAuthenticated: true, userId: sessionStorage.getItem('id') }))
+      history.push('/dashboard')
+    }
+  }, [])
 
   const login = async (event) => {
     event.preventDefault()
@@ -23,6 +30,7 @@ const Login = () => {
       const response = await authenticateUser(user)
       if (response.data) {
         console.log('Log in successfull', response)
+        sessionStorage.setItem('id', response.data.userId)
         dispatch(setUser({ isAuthenticated: true, userId: response.data.userId }))
         history.push('/dashboard')
       }
