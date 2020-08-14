@@ -13,7 +13,7 @@ const Login = () => {
     event.preventDefault()
 
     dispatch(setUser({ isAuthenticated: true }))
-    history.push('/calendar')
+    history.push('/dashboard')
   }
 
   return (
@@ -33,8 +33,8 @@ const Login = () => {
             <button onClick={login}>Sign In</button>
           </div>
           <div>
-            <Link to='/register'>Not Registered?</Link>
-            <Link to='/forgot'>Forgot Password?</Link>
+            <Link style={{ color: 'black' }} to='/register'>Not Registered?</Link>
+            <Link style={{ color: 'black', marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
           </div>
         </form>
       </div>

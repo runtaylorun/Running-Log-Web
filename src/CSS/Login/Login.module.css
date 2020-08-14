@@ -7,12 +7,12 @@
 
 .loginContainer {
 	display: flex;
+	background-color: #d4d4d4;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: 40%;
 	width: 40%;
-	background-color: royalblue;
 	border-radius: 7px;
 }
 
