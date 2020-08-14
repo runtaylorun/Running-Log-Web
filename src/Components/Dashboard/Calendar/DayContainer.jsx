@@ -8,10 +8,6 @@ const DayContainer = ({ day = '', month, year, nextMonth = false }) => {
   const [showAddButton, setShowAddButton] = useState(false)
   const [runsModalOpen, setRunsModalOpen] = useState(false)
 
-  console.log(day)
-  console.log(month)
-  console.log(year)
-  console.log(`${day}/${month}/${year}`)
   return (
     <div
       onMouseOut={() => setShowAddButton(false)}

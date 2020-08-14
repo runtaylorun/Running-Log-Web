@@ -6,7 +6,6 @@ const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay, currentMo
   const maxDaysOnCalendar = 42
   const generateDayContainers = () => {
     const containers = []
-    console.log(previousEndingDay)
 
     if (startingDay !== 0) {
       for (let i = startingDay - 2; i >= 0; i--) {

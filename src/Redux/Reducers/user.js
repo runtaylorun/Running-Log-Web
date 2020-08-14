@@ -1,7 +1,8 @@
 import { SET_USER } from '../Actions/actionTypes'
 
 const initialState = {
-  authenticated: false
+  authenticated: false,
+  userId: 0
 }
 
 const userReducer = (state = initialState, action) => {
