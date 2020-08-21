@@ -1,9 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { getIsUserAuthenticated } from './Redux/Reducers/selectors'
 import Navbar from './Components/Shared/Navbar'
 import CalendarPage from './Components/Dashboard/Calendar/CalendarPage'
 import Login from './Components/Login/Login'
+import { setUser } from './Redux/Actions/user'
 import ActivityForm from './Components/ActivityForm/ActivityForm'
 import StatisticsPage from './Components/Statistics/StatisticsPage'
 import Gear from './Components/Gear/Gear'
@@ -14,7 +15,13 @@ import './App.css'
 
 function App () {
   const isUserAuthenticated = useSelector(getIsUserAuthenticated)
-  console.log(isUserAuthenticated)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (sessionStorage.getItem('id')) {
+      dispatch(setUser({ isAuthenticated: true, userId: sessionStorage.getItem('id') }))
+    }
+  }, [])
 
   const PrivateRoute = ({ children, ...rest }) => {
     return (
@@ -55,6 +62,9 @@ function App () {
         </PrivateRoute>
         <PrivateRoute exact path='/settings'>
           <Settings />
+        </PrivateRoute>
+        <PrivateRoute exact path='/activityForm/:activityId'>
+          <ActivityForm />
         </PrivateRoute>
         <PrivateRoute exact path='/activityForm/:day/:month/:year'>
           <ActivityForm />

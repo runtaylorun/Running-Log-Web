@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setUser } from '../../Redux/Actions/user'
 import classes from '../../CSS/Login/Login.module.css'
 import { authenticateUser } from '../../Services/auth'
@@ -8,12 +9,12 @@ import { Link, useHistory } from 'react-router-dom'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const isUserAuthenticated = useSelector(getIsUserAuthenticated)
   const dispatch = useDispatch()
   const history = useHistory()
 
   useEffect(() => {
-    if (sessionStorage.getItem('id')) {
-      dispatch(setUser({ isAuthenticated: true, userId: sessionStorage.getItem('id') }))
+    if (isUserAuthenticated) {
       history.push('/dashboard')
     }
   }, [])

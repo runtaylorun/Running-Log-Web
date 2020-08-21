@@ -1,17 +1,28 @@
 import React from 'react'
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setUser } from '../../Redux/Actions/user'
+import { signOut as signOutCall } from '../../Services/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import classes from '../../CSS/Shared/Sidebar.module.css'
 
 const Navbar = (props) => {
   const isAuthenticated = useSelector(getIsUserAuthenticated)
   const dispatch = useDispatch()
+  const history = useHistory()
 
-  const signOut = () => {
-    dispatch(setUser({ isAuthenticated: false }))
+  const signOut = async () => {
+    try {
+      const result = await signOutCall()
+      if (result) {
+        sessionStorage.clear()
+        dispatch(setUser({ isAuthenticated: false, userId: 0 }))
+        history.push('/')
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return isAuthenticated ? (
@@ -32,6 +43,7 @@ const Navbar = (props) => {
       visible
       as={Menu}
     >
+      <h1>Log2Win</h1>
       <Menu.Item as='a'>
         <Icon name='home' size='big' />
         <Link to='/dashboard'>Dashboard</Link>
@@ -52,9 +64,9 @@ const Navbar = (props) => {
         <Icon name='setting' size='big' />
         <Link to='/settings'>Settings</Link>
       </Menu.Item>
-      <Menu.Item as='a'>
+      <Menu.Item onClick={() => signOut()} as='a'>
         <Icon name='sign out' size='big' />
-        <Link onClick={() => signOut()} to='/'>
+        <Link>
 					Sign Out
         </Link>
       </Menu.Item>
