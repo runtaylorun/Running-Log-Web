@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { createActivity, getActivityByActivityId, updateActivity } from '../../Services/activities'
+import { calculatePacePerMile, calculatePacePerKm } from '../../Lib/pace'
 import classes from '../../CSS/ActivityForm/ActivityForm.module.css'
 
 const ActivityForm = () => {
@@ -16,6 +17,8 @@ const ActivityForm = () => {
   const [distanceUnit, setDistanceUnit] = useState('Mi')
   const [type, setType] = useState(1)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [pacePerMile, setPacePerMile] = useState('')
+  const [pacePerKm, setPacePerKm] = useState('')
 
   useEffect(() => {
     const getActivity = async () => {
@@ -112,15 +115,15 @@ const ActivityForm = () => {
             </div>
             <div className={classes.inputContainer}>
               <label>Elapsed Time</label>
-              <input value={elapsedTime} onChange={(e) => setElapsedTime(e.target.value)} type='text' />
+              <input value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKm(elapsedTime, { distance, distanceUnit })) }} type='text' />
             </div>
           </div>
           <div className={classes.formRow4}>
             <div className={classes.inputContainer}>
               <label>Pace per Mi</label>
-              <input></input>
+              <input type='text' readOnly value={pacePerMile}></input>
               <label>Pace per Km</label>
-              <input></input>
+              <input type='text' readOnly value={pacePerKm}></input>
             </div>
             <div className={classes.inputContainer}>
               <label>Difficulty Rating</label>
@@ -139,11 +142,14 @@ const ActivityForm = () => {
               </select>
             </div>
           </div>
-          <div className={classes.inputContainer}>
-            <label>Comments</label>
-            <textarea value={comments} onChange={(e) => setComments(e.target.value)} />
+          <div className={classes.formRow5}>
+            <div className={classes.inputContainer}>
+              <label>Comments</label>
+              <textarea value={comments} onChange={(e) => setComments(e.target.value)} />
+            </div>
           </div>
-          <div className={classes.inputContainer}>
+
+          <div style={{ marginTop: 20 }} className={classes.inputContainer}>
             <Button as='button' type='submit'>Submit</Button>
           </div>
         </form>
