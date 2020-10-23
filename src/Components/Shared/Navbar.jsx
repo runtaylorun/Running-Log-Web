@@ -43,30 +43,30 @@ const Navbar = (props) => {
       visible
       as={Menu}
     >
-      <h1>Log2Win</h1>
+      <h1 style={{color: '#1F6FDD'}}>Log2Win</h1>
       <Menu.Item as='a'>
-        <Icon name='home' size='big' />
-        <Link to='/dashboard'>Dashboard</Link>
+        <Icon style={{color: '#24182D'}} name='home' size='big' />
+        <Link style={{color: '#24182D'}} to='/dashboard'>Dashboard</Link>
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='calendar' size='big' />
-        <Link to='/Calendar'>Calendar</Link>
+        <Icon style={{color: '#24182D'}} name='calendar' size='big' />
+        <Link style={{color: '#24182D'}} to='/Calendar'>Calendar</Link>
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='chart bar' size='big' />
-        <Link to='/statistics'>Statistics</Link>
+        <Icon style={{color: '#24182D'}} name='chart bar' size='big' />
+        <Link style={{color: '#24182D'}} to='/statistics'>Statistics</Link>
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='shopping bag' size='big' />
-        <Link to='/gear'>Gear</Link>
+        <Icon style={{color: '#24182D'}} name='shopping bag' size='big' />
+        <Link style={{color: '#24182D'}} to='/gear'>Gear</Link>
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='setting' size='big' />
-        <Link to='/settings'>Settings</Link>
+        <Icon style={{color: '#24182D'}} name='setting' size='big' />
+        <Link style={{color: '#24182D'}} to='/settings'>Settings</Link>
       </Menu.Item>
       <Menu.Item onClick={() => signOut()} as='a'>
-        <Icon name='sign out' size='big' />
-        <Link>
+        <Icon style={{color: '#24182D'}} name='sign out' size='big' />
+        <Link style={{color: '#24182D'}}>
 					Sign Out
         </Link>
       </Menu.Item>

@@ -4,8 +4,8 @@ import Calendar from './Calendar'
 import CalendarHeader from './CalendarHeader'
 import CalendarBody from './CalendarBody'
 import CalendarFooter from './CalendarFooter'
-import { getActivitiesByUserId } from '../../../Services/activities'
-import classes from '../../../CSS/Dashboard/Calendar.module.css'
+import { getActivitiesByUserId } from '../../Services/activities'
+import classes from '../../CSS/Dashboard/Calendar.module.css'
 
 const CalendarPage = (props) => {
   const [selectedMonth, setSelectedMonth] = useState(Moment().month())
@@ -20,7 +20,6 @@ const CalendarPage = (props) => {
         month: selectedMonth + 1,
         year: selectedYear
       }
-
       const results = await getActivitiesByUserId(sessionStorage.getItem('id'), params)
 
       if (results) {
@@ -28,7 +27,7 @@ const CalendarPage = (props) => {
       }
     }
     getActivities()
-  }, [])
+  }, [selectedMonth])
 
   const increaseMonthHandler = () => {
     const forwardOneMonth = Moment(selectedDate).add(1, 'M')

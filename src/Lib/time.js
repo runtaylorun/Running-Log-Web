@@ -33,7 +33,7 @@ export const getDatesForCurrentWeek = () => {
   const startOfCurrentWeek = getStartOfCurrentWeekISO()
 
   for (let i = 0; i < 7; i++) {
-    dates.push(Moment(startOfCurrentWeek).add(i, 'd').format('DD/MM/YY'))
+    dates.push(Moment(startOfCurrentWeek).add(i, 'd').format('MM/DD/YY'))
   }
 
   return dates

@@ -1,15 +1,21 @@
 import React from 'react'
 import classes from '../../CSS/Dashboard/Dashboard.module.css'
-import Day from './Day'
+import DashboardDay from './DashboardDay'
 import Moment from 'moment'
-import { getStartOfCurrentWeekISO, getDatesForCurrentWeek } from '../../Lib/time'
+import { getStartOfCurrentWeekISO, getDatesForCurrentWeek, formatDate } from '../../Lib/time'
 
-const DashboardWeek = () => {
+const DashboardWeek = ({ activities }) => {
+  console.log(activities)
   const generateWeek = () => {
     const containers = []
     const currentWeek = getStartOfCurrentWeekISO()
     for (let i = 0; i < 7; i++) {
-      containers.push(<Day day={Moment(currentWeek).add(i, 'd').format('ddd')} />)
+      containers.push(
+        <DashboardDay
+          day={Moment(currentWeek).add(i, 'd').format('ddd')}
+          activities={activities.filter(activity => activity.date === formatDate(Moment(currentWeek).add(i, 'd')))}
+        />
+      )
     }
 
     return containers
@@ -24,6 +30,9 @@ const DashboardWeek = () => {
       </div>
       <div className={classes.weekBody}>
         {generateWeek()}
+      </div>
+      <div className={classes.weekFooter}>
+          <h2>Weekly Total</h2>
       </div>
     </div>
   )

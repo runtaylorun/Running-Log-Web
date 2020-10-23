@@ -1,5 +1,5 @@
-import React from 'react';
-import classes from '../../../CSS/Dashboard/Calendar.module.css';
+import React from 'react'
+import classes from '../../CSS/Dashboard/Calendar.module.css'
 
 const CalendarFooter = () => {
 	return (

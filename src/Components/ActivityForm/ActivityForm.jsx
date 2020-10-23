@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { createActivity, getActivityByActivityId, updateActivity } from '../../Services/activities'
-import { calculatePacePerMile, calculatePacePerKm } from '../../Lib/pace'
+import { calculatePacePerMile, calculatePacePerKilometer } from '../../Lib/pace'
 import classes from '../../CSS/ActivityForm/ActivityForm.module.css'
 
 const ActivityForm = () => {
@@ -115,7 +115,7 @@ const ActivityForm = () => {
             </div>
             <div className={classes.inputContainer}>
               <label>Elapsed Time</label>
-              <input value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKm(elapsedTime, { distance, distanceUnit })) }} type='text' />
+              <input value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKilometer(elapsedTime, { distance, distanceUnit })) }} type='text' />
             </div>
           </div>
           <div className={classes.formRow4}>

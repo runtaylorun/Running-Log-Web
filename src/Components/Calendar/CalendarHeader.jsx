@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from 'moment'
 import { Icon } from 'semantic-ui-react'
-import classes from '../../../CSS/Dashboard/Calendar.module.css'
+import classes from '../../CSS/Dashboard/Calendar.module.css'
 const CalendarHeader = ({ selectedMonth, selectedYear, advanceMonthHandler, decreaseMonthHandler }) => {
   return (
     <div className={classes.calendarHeaderContainer}>
