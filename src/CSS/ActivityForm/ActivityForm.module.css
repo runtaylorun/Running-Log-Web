@@ -4,6 +4,7 @@
     justify-content: center;
     height: 100%;
     align-items: center;
+    color: #24182D;
 }
 
 .form {
@@ -14,24 +15,21 @@
 }
 
 input {
-    border-radius: 5px;
-    border: 1px solid #478dad;
-    background-color: #e0e0e0;
-    padding: 5px
+    background-color: white;
+    border: 1px solid #d4d4d4;
+    padding: 5px;
 }
 
 select {
     padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #478dad;
-    background-color: #e0e0e0;
+    border: 1px solid #d4d4d4;
+    background-color: white;
 }
 
 textarea {
     padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #478dad;
-    background-color: #e0e0e0;
+    background-color: white;
+    border: 1px solid #d4d4d4;
     resize: none;
 }
 

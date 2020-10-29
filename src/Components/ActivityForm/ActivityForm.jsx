@@ -76,8 +76,7 @@ const ActivityForm = () => {
 	  formSubmitted ? <Redirect to='/calendar' />
       : <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
-          <h1>Manual Entry</h1>
-
+          <h1>Activity Form</h1>
         </div>
         <form onSubmit={submitHandler} className={classes.form}>
           <div className={classes.formRow1}>
@@ -149,8 +148,9 @@ const ActivityForm = () => {
             </div>
           </div>
 
-          <div style={{ marginTop: 20 }} className={classes.inputContainer}>
-            <Button as='button' type='submit'>Submit</Button>
+          <div style={{ marginTop: 20 }} className={classes.formButtons}>
+            <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='submit'>Submit</Button>
+            <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='reset'>Reset</Button>
           </div>
         </form>
       </div>

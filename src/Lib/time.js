@@ -42,3 +42,7 @@ export const getDatesForCurrentWeek = () => {
 export const formatDate = (dateString) => {
   return Moment(dateString).format('YYYY-MM-DD')
 }
+
+export const secondsToHourMinuteSeconds = (seconds) => {
+  return Moment('2015-01-01').startOf('day').seconds(seconds).format('hh:mm:ss')
+}

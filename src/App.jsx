@@ -7,6 +7,7 @@ import Login from './Components/Login/Login'
 import { setUser } from './Redux/Actions/user'
 import ActivityForm from './Components/ActivityForm/ActivityForm'
 import StatisticsPage from './Components/Statistics/StatisticsPage'
+import GearForm from './Components/Gear/GearForm'
 import Gear from './Components/Gear/Gear'
 import Settings from './Components/Settings/Settings'
 import Dashboard from './Components/Dashboard/Dashboard'
@@ -62,6 +63,9 @@ function App () {
         </PrivateRoute>
         <PrivateRoute exact path='/settings'>
           <Settings />
+        </PrivateRoute>
+        <PrivateRoute exact path='/gear/gearForm/:gearId'>
+          <GearForm />
         </PrivateRoute>
         <PrivateRoute exact path='/activityForm/:activityId'>
           <ActivityForm />

@@ -1,26 +1,31 @@
 import Moment from 'moment'
+import { secondsToHourMinuteSeconds } from './time'
 
 export const calculatePacePerMile = (time, distance) => {
   const timeInSeconds = timeToSeconds(time)
-  console.log('Time in seconds', timeInSeconds)
+  console.log(Moment(time))
 
-  if (distance.unit === 'Km') {
-
+  if (distance.distanceUnit === 'Km') {
+    const convertedDistance = distance.distance / 1.609344
+    const averageSecondsPerMile = timeInSeconds / convertedDistance
+    console.log(averageSecondsPerMile)
+    return secondsToHourMinuteSeconds(averageSecondsPerMile)
   } else {
-    const averageSecondsPerMile = timeInSeconds * distance
-    console.log('Average seconds per mile', averageSecondsPerMile)
+    const averageSecondsPerMile = timeInSeconds / distance.distance
+    return secondsToHourMinuteSeconds(averageSecondsPerMile)
   }
 }
 
 export const calculatePacePerKilometer = (time, distance) => {
   const timeInSeconds = timeToSeconds(time)
-  console.log('Time in seconds', timeInSeconds)
 
-  if (distance.unit === 'Mi') {
-
+  if (distance.distanceUnit === 'Mi') {
+    const convertedDistance = distance.distance * 1.609344
+    const averageSecondsPerMile = timeInSeconds / convertedDistance
+    return secondsToHourMinuteSeconds(averageSecondsPerMile)
   } else {
-    const averageSecondsPerMile = timeInSeconds * distance
-    console.log('Average seconds per mile', averageSecondsPerMile)
+    const averageSecondsPerMile = timeInSeconds / distance.distance
+    return secondsToHourMinuteSeconds(averageSecondsPerMile)
   }
 }
 

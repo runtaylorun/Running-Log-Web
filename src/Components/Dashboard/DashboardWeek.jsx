@@ -32,7 +32,7 @@ const DashboardWeek = ({ activities }) => {
         {generateWeek()}
       </div>
       <div className={classes.weekFooter}>
-          <h2>Weekly Total</h2>
+        <h2>{`Weekly Total: ${activities.reduce((accumulator, activity) => { return accumulator + activity.distance }, 0)} Mi`}</h2>
       </div>
     </div>
   )
