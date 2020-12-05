@@ -1,0 +1,19 @@
+.historyPageContainer {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.historyTable {
+    margin-top: 50px;
+    border: 1px solid black;
+    width: 80%;
+    text-align: left;
+}
+
+.historyTableHeader th {
+    border-bottom: 1px solid black;
+}
+
+

@@ -13,8 +13,9 @@ const RunContainer = ({ title, distance, type, unit, activityId }) => {
         <Link to={`/activityForm/${activityId}`}>
           <Button size='tiny' icon='write' />
         </Link>
-        <Button size='tiny' icon='eye' />
-
+        <Link to={`/activityView/${activityId}`}>
+          <Button size='tiny' icon='eye' />
+        </Link>
       </div>
     </div>
   )

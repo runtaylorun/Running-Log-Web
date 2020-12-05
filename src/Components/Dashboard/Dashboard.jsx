@@ -21,7 +21,7 @@ const Dashboard = () => {
           setWeeklyActivities([...results.data])
         }
       } catch (error) {
-
+        console.log('Error fetching activities for this week', error)
       }
     }
 

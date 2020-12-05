@@ -51,7 +51,7 @@ const ActivityForm = () => {
     event.preventDefault()
 
     const activity = {
-      activityTitle,
+      title: activityTitle,
       type,
       distanceUnit,
       distance: parseInt(distance, 10),

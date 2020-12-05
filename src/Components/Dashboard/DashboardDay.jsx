@@ -2,15 +2,12 @@ import React from 'react'
 import classes from '../../CSS/Dashboard/Dashboard.module.css'
 
 const Day = ({ day, activities }) => {
-
-
-
   return (
     <div className={classes.day}>
       <div>
         <h3>{day}</h3>
       </div>
-      <div style={{width: '100%'}}>
+      <div style={{ width: '100%' }}>
         {activities.map((activity) => (
           <div className={classes.activity} key={activity.id}>
             <p>{activity.activityTitle}</p>

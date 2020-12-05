@@ -13,6 +13,7 @@ const CalendarPage = (props) => {
   const [selectedDate, setSelectedDate] = useState(Moment())
   const [daysThisMonth, setDaysThisMonth] = useState(Moment().daysInMonth())
   const [userActivities, setUserActivities] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getActivities = async () => {
@@ -24,6 +25,7 @@ const CalendarPage = (props) => {
 
       if (results) {
         setUserActivities([...results.data])
+        setIsLoading(false)
       }
     }
     getActivities()
@@ -31,13 +33,13 @@ const CalendarPage = (props) => {
 
   const increaseMonthHandler = () => {
     const forwardOneMonth = Moment(selectedDate).add(1, 'M')
-
+    setIsLoading(true)
     updateDates(forwardOneMonth)
   }
 
   const decreaseMonthHandler = () => {
     const backOneMonth = Moment(selectedDate).subtract(1, 'M')
-
+    setIsLoading(true)
     updateDates(backOneMonth)
   }
 
@@ -50,12 +52,7 @@ const CalendarPage = (props) => {
 
   return (
     <div className={classes.calendarPage} >
-      {/* <div className={classes.calendarViewContainer}>
-        <a href='#'>Monthly</a>
-        <a href='#'>Weekly</a>
-        <a href='#'>Daily</a>
-      </div> */}
-      <Calendar>
+      <Calendar loading={isLoading}>
         <CalendarHeader
           selectedMonth={selectedMonth}
           selectedYear={selectedYear}

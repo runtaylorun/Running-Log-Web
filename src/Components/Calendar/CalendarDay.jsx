@@ -43,9 +43,9 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
             </div>
             { activities && activities.length > 0 && activities.map(activity => {
               return <RunContainer
-                activityId={activity.activityId}
-                key={activity.activityId}
-                title={activity.activityTitle}
+                activityId={activity.id}
+                key={activity.id}
+                title={activity.title}
                 distance={activity.distance}
                 type={activity.type}
                 unit={activity.distanceUnit}

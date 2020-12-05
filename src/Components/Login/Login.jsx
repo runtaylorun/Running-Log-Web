@@ -9,6 +9,7 @@ import { Link, useHistory } from 'react-router-dom'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
   const isUserAuthenticated = useSelector(getIsUserAuthenticated)
   const dispatch = useDispatch()
   const history = useHistory()
@@ -41,26 +42,30 @@ const Login = () => {
   }
 
   return (
-    <div className={classes.loginPage}>
-      <div className={classes.loginContainer}>
-        <h2>Login</h2>
-        <form>
-          <div className={classes.inputContainer}>
-            <label>Email</label>
-            <input value={email} onChange={(event) => setEmail(event.target.value)} type='text' name='email' />
-          </div>
-          <div className={classes.inputContainer}>
-            <label>Password</label>
-            <input value={password} onChange={(event) => setPassword(event.target.value)} type='password' name='password' />
-          </div>
-          <div className={classes.inputContainer}>
-            <button onClick={login}>Sign In</button>
-          </div>
-          <div>
-            <Link style={{ color: 'black' }} to='/register'>Not Registered?</Link>
-            <Link style={{ color: 'black', marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
-          </div>
-        </form>
+    <div className={classes.page}>
+      <div className={classes.card}>
+        <div className={classes.cardHeader}>
+          <h2>Login</h2>
+        </div>
+        <div className={classes.cardBody}>
+          <form>
+            <div className={classes.inputContainer}>
+              <label>Email</label>
+              <input value={email} onChange={(event) => setEmail(event.target.value)} type='text' name='email' />
+            </div>
+            <div className={classes.inputContainer}>
+              <label>Password</label>
+              <input value={password} onChange={(event) => setPassword(event.target.value)} type='password' name='password' />
+            </div>
+            <div className={classes.formSubmitContainer}>
+              <button onClick={login}>Sign In</button>
+            </div>
+          </form>
+        </div>
+        <div className={classes.cardFooter}>
+          <Link style={{ color: 'black' }} to='/register'>Not Registered?</Link>
+          <Link style={{ color: 'black', marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
+        </div>
       </div>
     </div>
   )

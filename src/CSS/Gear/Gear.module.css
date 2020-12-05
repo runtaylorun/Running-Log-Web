@@ -6,7 +6,22 @@
     color: #24182D;
 }
 
-.pageHeader {
+.noGearContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.gearCardsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.gearFormPageHeader {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,4 +54,32 @@
     width: 35%;
     display: flex;
     justify-content: space-between;
+}
+
+.card {
+    border: 1px solid black;
+    max-width: 512px;
+    min-width: 256px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.cardIconContainer {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+}
+
+.cardDetailsContainer {
+    grid-column: 2 / 2;
+    grid-row: 1 / 1;
+}
+
+.cardProgressContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 1 / 3;
+    grid-row: 2 / 2;
 }
