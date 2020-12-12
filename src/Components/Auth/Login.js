@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setUser } from '../../Redux/Actions/user'
-import classes from '../../CSS/Login/Login.module.css'
+import classes from './login.module.css'
 import { authenticateUser } from '../../Services/auth'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -45,11 +45,11 @@ const Login = () => {
     <div className={classes.page}>
       <div className={classes.card}>
         <div className={classes.cardHeader}>
-          <h2>Login</h2>
+          <h2>Welcome to Fitness Guardian</h2>
         </div>
         <div className={classes.cardBody}>
           <form>
-            <div className={classes.inputContainer}>
+              <div className={classes.inputContainer}>
               <label>Email</label>
               <input value={email} onChange={(event) => setEmail(event.target.value)} type='text' name='email' />
             </div>

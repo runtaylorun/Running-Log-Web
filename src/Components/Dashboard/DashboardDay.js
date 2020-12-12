@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../../CSS/Dashboard/Dashboard.module.css'
+import classes from './dashboard.module.css'
 
 const Day = ({ day, activities }) => {
   return (

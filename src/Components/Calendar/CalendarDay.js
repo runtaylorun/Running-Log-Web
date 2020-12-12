@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal } from 'semantic-ui-react'
 import RunContainer from './RunContainer'
-import classes from '../../CSS/Dashboard/Calendar.module.css'
+import classes from './calendar.module.css'
 
 const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdown = false, activities }) => {
   const [showAddButton, setShowAddButton] = useState(false)

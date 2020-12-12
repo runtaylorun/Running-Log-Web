@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Progress } from 'semantic-ui-react'
-import classes from '../../CSS/Gear/Gear.module.css'
+import classes from './gear.module.css'
 
 const GearCard = ({ gear }) => {
   return (

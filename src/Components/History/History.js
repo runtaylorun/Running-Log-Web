@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import ComingSoon from '../Shared/ComingSoon'
 import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { getActivitiesByUserId } from '../../Services/activities'
-import classes from '../../CSS/History/History.module.css'
+import classes from './history.module.css'
 
 const History = () => {
   const [activities, setActivities] = useState([])

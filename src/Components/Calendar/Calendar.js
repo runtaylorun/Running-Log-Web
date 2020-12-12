@@ -1,6 +1,6 @@
 import React from 'react'
-import { Loader, Dimmer, Segment } from 'semantic-ui-react'
-import classes from '../../CSS/Dashboard/Calendar.module.css'
+import { Loader } from 'semantic-ui-react'
+import classes from './calendar.module.css'
 
 const Calendar = ({ children, loading }) => {
   return (

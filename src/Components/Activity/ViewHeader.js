@@ -1,10 +1,9 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
-import GearCard from '../Gear/GearCard'
-import classes from '../../CSS/Activity/ActivityView.module.css'
+import classes from './activity.module.css'
 
 const ViewHeader = ({ title, date }) => {
-  return (
+    return (
         <div className={classes.activityHeader}>
             <div className={classes.headerGroup1}>
                 <h1>{title}</h1>
@@ -14,7 +13,7 @@ const ViewHeader = ({ title, date }) => {
                 <p style={{ fontSize: '14px' }}>{date}</p>
             </div>
         </div>
-  )
+    )
 }
 
 export default ViewHeader

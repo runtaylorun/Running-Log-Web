@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import classes from '../../CSS/Dashboard/Calendar.module.css'
+import classes from './calendar.module.css'
 
 const RunContainer = ({ title, distance, type, unit, activityId }) => {
   return (

@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import GearCard from './GearCard'
 import { getUserGear } from '../../Services/gear'
-import classes from '../../CSS/Gear/Gear.module.css'
+import classes from './gear.module.css'
 
 const Gear = () => {
   const [userGear, setUserGear] = useState([])

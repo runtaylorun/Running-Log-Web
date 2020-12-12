@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DashboardWeek from './DashboardWeek'
 import Moment from 'moment'
-import classes from '../../CSS/Dashboard/Dashboard.module.css'
+import classes from './dashboard.module.css'
 import { getActivitiesByUserId } from '../../Services/activities'
 import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO } from '../../Lib/time'
 

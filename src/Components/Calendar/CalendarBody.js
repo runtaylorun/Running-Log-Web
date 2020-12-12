@@ -1,7 +1,7 @@
 import React from 'react'
 import CalendarDay from './CalendarDay'
-import { formatDate, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, toISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
-import classes from '../../CSS/Dashboard/Calendar.module.css'
+import { formatDate, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
+import classes from './calendar.module.css'
 
 /*
   startingDay: day of week integer code for the day of the week that starts the current month

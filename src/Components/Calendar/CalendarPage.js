@@ -5,7 +5,7 @@ import CalendarHeader from './CalendarHeader'
 import CalendarBody from './CalendarBody'
 import CalendarFooter from './CalendarFooter'
 import { getActivitiesByUserId } from '../../Services/activities'
-import classes from '../../CSS/Dashboard/Calendar.module.css'
+import classes from './calendar.module.css'
 
 const CalendarPage = (props) => {
   const [selectedMonth, setSelectedMonth] = useState(Moment().month())

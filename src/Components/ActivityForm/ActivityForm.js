@@ -3,7 +3,7 @@ import { useParams, Redirect } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { createActivity, getActivityByActivityId, updateActivity } from '../../Services/activities'
 import { calculatePacePerMile, calculatePacePerKilometer } from '../../Lib/pace'
-import classes from '../../CSS/ActivityForm/ActivityForm.module.css'
+import classes from './activityForm.module.css'
 
 const ActivityForm = () => {
   const { day, month, year, activityId } = useParams()
@@ -73,7 +73,8 @@ const ActivityForm = () => {
   }
 
   return (
-	  formSubmitted ? <Redirect to='/calendar' />
+    formSubmitted
+      ? <Redirect to='/calendar' />
       : <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <h1>Activity Form</h1>

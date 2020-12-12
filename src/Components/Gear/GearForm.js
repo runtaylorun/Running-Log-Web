@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import { getCurrentDate } from '../../Lib/time'
 import { createNewGear } from '../../Services/gear'
-import classes from '../../CSS/Gear/Gear.module.css'
+import classes from './gear.module.css'
 
 const GearForm = ({ gearId }) => {
   const [brand, setBrand] = useState('')
