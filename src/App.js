@@ -11,7 +11,6 @@ import History from './Components/History/History'
 import ActivityView from './Components/Activity/ActivityView'
 import { setUser } from './Redux/Actions/user'
 import ActivityForm from './Components/ActivityForm/ActivityForm'
-import StatisticsPage from './Components/Statistics/StatisticsPage'
 import GearForm from './Components/Gear/GearForm'
 import Gear from './Components/Gear/Gear'
 import Settings from './Components/Settings/Settings'
@@ -66,9 +65,6 @@ function App () {
         </PrivateRoute>
         <PrivateRoute exact path='/history'>
           <History />
-        </PrivateRoute>
-        <PrivateRoute exact path='/statistics'>
-          <StatisticsPage />
         </PrivateRoute>
         <PrivateRoute exact path='/gear'>
           <Gear />

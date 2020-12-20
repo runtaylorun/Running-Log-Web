@@ -1,19 +1,21 @@
 .dashboardPage {
     display: grid;
     height: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .weekContainer {
     margin-top: 20px;
     display: 'flex';
     flex-direction: 'column';
-    grid-column: 1 / 5;
+    grid-column: 1 / 4;
     grid-row: 1 / 4;
     justify-self: center;
     width: 85%;
-    height: 100%;
+    height: 50%;
     border-radius: 5px;
     background-color: white;
     padding: 10px;
@@ -34,6 +36,7 @@
 
 .weekHeader h3 {
     text-align: center;
+    font-weight: 400;
     margin: 0;
     width: 13%;
 }

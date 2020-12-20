@@ -7,13 +7,35 @@
 
 .historyTable {
     margin-top: 50px;
-    border: 1px solid black;
-    width: 80%;
+    border-collapse: collapse;
+    background-color: hsl(255, 0%, 95%);
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
     text-align: left;
+    border-radius: 5px;
+}
+
+.historyTableHeader {
+    color: white;
+    background-color: #216FDD;
 }
 
 .historyTableHeader th {
-    border-bottom: 1px solid black;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.tableBodyRow td {
+    padding: 10px
+}
+
+.tableBodyRow:nth-child(even) td  {
+    background-color: #FFFFFF;
+}
+
+.tableBodyRow:nth-child(odd) td {
+    background-color: #F6F6F6;
 }
 
 

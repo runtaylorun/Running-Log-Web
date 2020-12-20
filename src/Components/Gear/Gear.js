@@ -23,7 +23,31 @@ const Gear = () => {
 
   return (
     <div className={classes.pageContainer}>
-      {userGear && userGear.length === 0
+      <div className={classes.header}>
+        <a href='/gear/gearForm/0'>Add New Gear</a>
+      </div>
+      <div className={classes.body}>
+        <GearCard key={1}  gear={{
+              brand: 'Nike',
+              model: 'Pegasus 37',
+              colorway: 'Midnight City',
+              miles: 150,
+            }}/>
+        <GearCard key={2}  gear={{
+              brand: 'Nike',
+              model: 'Pegasus 37',
+              colorway: 'Midnight City',
+              miles: 150,
+            }}/>
+        <GearCard key={3}  gear={{
+              brand: 'Nike',
+              model: 'Pegasus 37',
+              colorway: 'Midnight City',
+              miles: 150,
+            }}/>
+      </div>
+
+      {/* {userGear && userGear.length === 0
         ? <div className={classes.noGearContainer}>
             <h1>Looks like you dont have any gear</h1>
             <h2>Click the button below to add some</h2>
@@ -36,7 +60,8 @@ const Gear = () => {
             <GearCard key={i} gear={gear} />
           ))}
         </div>
-      }
+      } */}
+      
     </div>
   )
 }

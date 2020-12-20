@@ -43,9 +43,6 @@ const GearForm = ({ gearId }) => {
 
   return (
     <div className={classes.pageContainer}>
-      <div className={classes.gearFormPageHeader}>
-        <h1>Gear Form</h1>
-      </div>
       <form onSubmit={(e) => handleSubmit(e)} className={classes.form}>
         <div className={classes.formRow1}>
           <div className={classes.inputContainer}>

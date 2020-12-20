@@ -58,10 +58,6 @@ const Navbar = (props) => {
         <Link style={linkStyle} to='/History'>History</Link>
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon style={linkStyle} name='chart bar' size='big' />
-        <Link style={linkStyle} to='/statistics'>Statistics</Link>
-      </Menu.Item>
-      <Menu.Item as='a'>
         <Icon style={linkStyle} name='shopping bag' size='big' />
         <Link style={linkStyle} to='/gear'>Gear</Link>
       </Menu.Item>

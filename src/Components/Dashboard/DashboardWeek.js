@@ -9,9 +9,11 @@ const DashboardWeek = ({ activities }) => {
   const generateWeek = () => {
     const containers = []
     const currentWeek = getStartOfCurrentWeekISO()
+    const dates = getDatesForCurrentWeek()
     for (let i = 0; i < 7; i++) {
       containers.push(
         <DashboardDay
+          date={dates[i]}
           day={Moment(currentWeek).add(i, 'd').format('ddd')}
           activities={activities.filter(activity => activity.date === formatDate(Moment(currentWeek).add(i, 'd')))}
         />

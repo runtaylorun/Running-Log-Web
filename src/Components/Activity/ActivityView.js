@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ViewHeader from './ViewHeader'
+import GearCard from '../Gear/GearCard'
 import DataSlot from './DataSlot'
 import { getActivityByActivityId } from '../../Services/activities'
 import { useParams } from 'react-router-dom'
@@ -26,16 +27,24 @@ const ActivityView = () => {
   })
   return (
     <div className={classes.activityViewPage}>
-      <ViewHeader date={activity.date} title={activity.activityTitle} />
+      <ViewHeader date='10-04-2020' title='Medium Long Run' />
       <div className={classes.gearArea}>
-
+        <GearCard gear={
+          {
+            brand: 'Nike',
+            model: 'Pegasus 37',
+            colorway: 'Midnight City',
+            miles: 150,
+          }
+        }/>
       </div>
       <div className={classes.mainArea}>
         <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '75%' }}>
-          <DataSlot label='Distance' data={`${activity.distance} Mi`} />
-          <DataSlot label='Pace per KM' data='5:20' />
+          <DataSlot label='Distance' data={`14 Mi`} />
+          <DataSlot label='Time' data={`01:32:15`} />
+          <DataSlot label='Pace per Mi' data='5:20' />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '75%', border: '1px solid black', height: '70%' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '75%', border: '1px solid black', borderRadius: 5, height: '70%' }}>
           <h2>Map Unavailable</h2>
         </div>
       </div>

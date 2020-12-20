@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Icon, Progress } from 'semantic-ui-react'
 import classes from './gear.module.css'
 
-const GearCard = ({ gear }) => {
+const GearCard = ({ gear, size}) => {
   return (
     <div className={classes.card}>
-      <div className={classes.cardIconContainer}>
+      <div className={classes.cardIconContainer} style={{}}>
         <Icon circular color='blue' size='big' name='heartbeat' />
       </div>
       <div className={classes.cardDetailsContainer}>
