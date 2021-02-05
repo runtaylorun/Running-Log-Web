@@ -4,7 +4,7 @@ import Calendar from './Calendar'
 import CalendarHeader from './CalendarHeader'
 import CalendarBody from './CalendarBody'
 import CalendarFooter from './CalendarFooter'
-import { getActivitiesByUserId } from '../../Services/activities'
+import { getActivities } from '../../Services/activities'
 import classes from './calendar.module.css'
 
 const CalendarPage = (props) => {
@@ -16,19 +16,19 @@ const CalendarPage = (props) => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const getActivities = async () => {
+    const pageLoad = async () => {
       const params = {
         month: selectedMonth + 1,
         year: selectedYear
       }
-      const results = await getActivitiesByUserId(sessionStorage.getItem('id'), params)
+      const results = await getActivities(params)
 
       if (results) {
         setUserActivities([...results.data])
         setIsLoading(false)
       }
     }
-    getActivities()
+    pageLoad()
   }, [selectedMonth])
 
   const increaseMonthHandler = () => {

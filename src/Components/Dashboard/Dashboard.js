@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DashboardWeek from './DashboardWeek'
 import Moment from 'moment'
 import classes from './dashboard.module.css'
-import { getActivitiesByUserId } from '../../Services/activities'
+import { getActivities } from '../../Services/activities'
 import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO } from '../../Lib/time'
 
 const Dashboard = () => {
@@ -10,13 +10,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getActivitiesForCurrentWeek = async () => {
-      const userId = sessionStorage.getItem('id')
       const params = {
         startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-MM-DD'),
         endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-MM-DD')
       }
       try {
-        const results = await getActivitiesByUserId(userId, params)
+        const results = await getActivities(params)
         if (results) {
           setWeeklyActivities([...results.data])
         }

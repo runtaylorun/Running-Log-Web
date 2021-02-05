@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { getActivitiesByUserId } from '../../Services/activities'
+import { getActivities } from '../../Services/activities'
 import classes from './history.module.css'
 
 const History = () => {
-
   const runs = [
     {
       date: '11-04-20',
@@ -97,16 +96,15 @@ const History = () => {
       activityTitle: 'Cooldown',
       distance: 3,
       activityId: 13
-    },
+    }
   ]
 
   const [activities, setActivities] = useState(runs)
 
-
   useEffect(() => {
     const loadActivities = async () => {
       try {
-        const results = await getActivitiesByUserId(sessionStorage.getItem('id'))
+        const results = await getActivities()
 
         setActivities(results?.data)
       } catch (error) {
@@ -123,17 +121,17 @@ const History = () => {
               <th>Date</th>
               <th>Type</th>
               <th>Title</th>
-              <th style={{textAlign: 'right'}}>Distance</th>
-              <th style={{textAlign: 'right'}}>Pace</th>
+              <th style={{ textAlign: 'right' }}>Distance</th>
+              <th style={{ textAlign: 'right' }}>Pace</th>
               <th>Action</th>
             </tr>
                 {activities.map((activity) => (
-                  <tr className={classes.tableBodyRow}>
+                  <tr key={activity.activityId} className={classes.tableBodyRow}>
                   <td>{activity.date}</td>
                   <td>{activity.type}</td>
                   <td>{activity.activityTitle}</td>
-                  <td style={{textAlign: 'right'}}>{activity.distance}</td>
-                  <td style={{textAlign: 'right'}}>3:52</td>
+                  <td style={{ textAlign: 'right' }}>{activity.distance}</td>
+                  <td style={{ textAlign: 'right' }}>3:52</td>
                   <td><a href={`/activityView/${activity.activityId}`}>View</a></td>
                   </tr>
                 ))}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ViewHeader from './ViewHeader'
 import GearCard from '../Gear/GearCard'
 import DataSlot from './DataSlot'
-import { getActivityByActivityId } from '../../Services/activities'
+import { getActivity } from '../../Services/activities'
 import { useParams } from 'react-router-dom'
 import classes from './activity.module.css'
 
@@ -15,7 +15,7 @@ const ActivityView = () => {
   useEffect(() => {
     const loadActivity = async () => {
       try {
-        const result = await getActivityByActivityId(sessionStorage.getItem('id'), activityId)
+        const result = await getActivity(activityId)
 
         setActivity(result?.data[0] ?? [])
       } catch (error) {

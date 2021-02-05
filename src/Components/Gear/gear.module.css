@@ -14,7 +14,6 @@
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     padding: 10px;
-
 }
 
 .noGearContainer {
@@ -23,13 +22,6 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-}
-
-.gearCardsContainer {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
 }
 
 .form {
@@ -42,12 +34,23 @@
 .inputContainer {
     display: flex;
     flex-direction: column;
-    margin: 5px;
+    margin: 10px;
 	justify-content: space-evenly;
 }
 
+.inputContainer label {
+    font-size: 16px;
+}
+
 .inputContainer input {
-    background-color: hsl(255, 0%, 90%);
+    line-height: 40px;
+    border: 1px solid #d4d4d4;
+    background: #fafafa;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
 }
 
 .formRow1 {
@@ -63,15 +66,31 @@
 }
 
 .card {
-    background-color: hsl(255, 0%, 96%);
-    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    background-color: #fafafa;
     max-width: 512px;
     min-width: 256px;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
     padding: 20px;
+    border: 1px solid #d4d4d4;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     border-radius: 5px;
+}
+
+.blankCard {
+    background-color: #fafafa;
+    max-width: 512px;
+    min-width: 256px;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    padding: 20px;
+    border: 1px solid #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .cardIconContainer {

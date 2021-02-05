@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import { createActivity, getActivityByActivityId, updateActivity } from '../../Services/activities'
+import { createActivity, getActivity, updateActivity } from '../../Services/activities'
 import { calculatePacePerMile, calculatePacePerKilometer } from '../../Lib/pace'
 import classes from './activityForm.module.css'
 
@@ -23,7 +23,7 @@ const ActivityForm = () => {
   useEffect(() => {
     const getActivity = async () => {
       try {
-        const response = await getActivityByActivityId(sessionStorage.getItem('id'), activityId)
+        const response = await getActivity(activityId)
 
         if (response) {
           setDistance(response.data[0].distance)
@@ -59,7 +59,6 @@ const ActivityForm = () => {
       elapsedTime,
       comments,
       difficultyRating: parseInt(difficultyRating, 10),
-      userId: sessionStorage.getItem('id')
     }
 
     if (activityId) {

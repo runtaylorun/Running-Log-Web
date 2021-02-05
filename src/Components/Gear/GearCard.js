@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Icon, Progress } from 'semantic-ui-react'
 import classes from './gear.module.css'
 
-const GearCard = ({ gear, size}) => {
+const GearCard = ({ gear, size }) => {
   return (
     <div className={classes.card}>
       <div className={classes.cardIconContainer} style={{}}>
@@ -15,7 +15,7 @@ const GearCard = ({ gear, size}) => {
         <p>03/05/2000 - Current</p>
       </div>
       <div className={classes.cardProgressContainer}>
-        <Progress size='medium' value={gear.miles} total={300} progress='ratio' />
+        <Progress size='medium' value={gear.miles} total={gear.maxMiles} label={`${gear.miles} / ${gear.maxMiles} Mi`} />
       </div>
     </div>
   )

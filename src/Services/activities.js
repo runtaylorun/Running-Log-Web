@@ -1,17 +1,17 @@
 import axios from 'axios'
 
 export const createActivity = async (activity) => {
-  await axios.post(`http://localhost:5000/activities`, { activity })
+  await axios.post('http://localhost:5000/activities', { activity, withCredentials: true })
 }
 
-export const getActivitiesByUserId = async (userId, query) => {
-  const result = await axios.get(`http://localhost:5000/activities/${userId}`, { params: query })
+export const getActivities = async (query) => {
+  const result = await axios.get('http://localhost:5000/activities', { params: query, withCredentials: true })
 
   return result
 }
 
-export const getActivityByActivityId = async (userId, activityId) => {
-  const result = await axios.get(`http://localhost:5000/activities/${userId}/${activityId}`)
+export const getActivity = async (activityId) => {
+  const result = await axios.get(`http://localhost:5000/activities/${activityId}`, { withCredentials: true })
 
   return result
 }

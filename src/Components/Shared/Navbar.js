@@ -1,23 +1,24 @@
 import React from 'react'
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
-import { setUser } from '../../Redux/Actions/user'
+import { setAuthentication } from '../../Redux/Actions/user'
 import { signOut as signOutCall } from '../../Services/auth'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Navbar = (props) => {
   const isAuthenticated = useSelector(getIsUserAuthenticated)
   const dispatch = useDispatch()
+  const location = useLocation()
   const history = useHistory()
+  const nonAuthRoutes = ['/', '/login', '/register', '/forgot']
   const linkStyle = { color: '#24182D' }
 
   const signOut = async () => {
     try {
       const result = await signOutCall()
       if (result) {
-        sessionStorage.clear()
-        dispatch(setUser({ isAuthenticated: false, userId: 0 }))
+        dispatch(setAuthentication(false))
         history.push('/login')
       }
     } catch (error) {
@@ -25,7 +26,7 @@ const Navbar = (props) => {
     }
   }
 
-  return isAuthenticated
+  return isAuthenticated && !nonAuthRoutes.includes(location.pathname)
     ? (
     <Sidebar
       style={{

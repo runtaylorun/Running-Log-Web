@@ -1,2 +1,1 @@
-export const getIsUserAuthenticated = state => state.user.isAuthenticated
-export const getCurrentUserId = state => state.user.userId
+export const getIsUserAuthenticated = state => state.user.authenticated

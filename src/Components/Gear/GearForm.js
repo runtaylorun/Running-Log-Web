@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import { getCurrentDate } from '../../Lib/time'
-import { createNewGear } from '../../Services/gear'
+import { createGear } from '../../Services/gear'
 import classes from './gear.module.css'
 
 const GearForm = ({ gearId }) => {
@@ -35,7 +35,7 @@ const GearForm = ({ gearId }) => {
     }
 
     try {
-      await createNewGear(sessionStorage.getItem('id'), gearToCreate)
+      await createGear(gearToCreate)
     } catch (error) {
       console.log(error)
     }
