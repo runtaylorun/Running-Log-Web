@@ -82,7 +82,7 @@ const ActivityForm = () => {
           <div className={classes.formRow1}>
             <div className={classes.inputContainer}>
               <label>Activity Title</label>
-              <input value={activityTitle} onChange={(e) => setActivityTitle(e.target.value)} type='text' />
+              <input className={classes.textbox} value={activityTitle} onChange={(e) => setActivityTitle(e.target.value)} type='text' />
             </div>
             <div className={classes.inputContainer}>
               <label>Type</label>
@@ -97,7 +97,7 @@ const ActivityForm = () => {
           <div className={classes.formRow2}>
             <div className={classes.inputContainer}>
               <label>Distance</label>
-              <input value={distance} onChange={(e) => setDistance(e.target.value)} type='text' />
+              <input className={classes.textbox} value={distance} onChange={(e) => setDistance(e.target.value)} type='text' />
             </div>
             <div className={classes.inputContainer}>
               <label>Distance Unit</label>
@@ -110,19 +110,19 @@ const ActivityForm = () => {
           <div className={classes.formRow3}>
             <div className={classes.inputContainer}>
               <label>Date</label>
-              <input value={date} onChange={(e) => setDate(e.target.value)} type='text' />
+              <input className={classes.textbox} value={date} onChange={(e) => setDate(e.target.value)} type='text' />
             </div>
             <div className={classes.inputContainer}>
               <label>Elapsed Time</label>
-              <input value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKilometer(elapsedTime, { distance, distanceUnit })) }} type='text' />
+              <input className={classes.textbox} value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKilometer(elapsedTime, { distance, distanceUnit })) }} type='text' />
             </div>
           </div>
           <div className={classes.formRow4}>
             <div className={classes.inputContainer}>
               <label>Pace per Mi</label>
-              <input type='text' readOnly value={pacePerMile}></input>
+              <input className={classes.textbox} type='text' readOnly value={pacePerMile}></input>
               <label>Pace per Km</label>
-              <input type='text' readOnly value={pacePerKm}></input>
+              <input className={classes.textbox} type='text' readOnly value={pacePerKm}></input>
             </div>
             <div className={classes.inputContainer}>
               <label>Difficulty Rating</label>
@@ -149,8 +149,8 @@ const ActivityForm = () => {
           </div>
 
           <div style={{ marginTop: 20 }} className={classes.formButtons}>
-            <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='submit'>Submit</Button>
-            <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='reset'>Reset</Button>
+            <button className={classes.button} type='submit'>Submit</button>
+            <button className={classes.button} type='reset'>Reset</button>
           </div>
         </form>
       </div>

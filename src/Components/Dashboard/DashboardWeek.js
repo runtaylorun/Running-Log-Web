@@ -2,10 +2,9 @@ import React from 'react'
 import classes from './dashboard.module.css'
 import DashboardDay from './DashboardDay'
 import Moment from 'moment'
-import { getStartOfCurrentWeekISO, getDatesForCurrentWeek, formatDate } from '../../Lib/time'
+import { getStartOfCurrentWeekISO, getDatesForCurrentWeek, formatDateDDMM } from '../../Lib/time'
 
 const DashboardWeek = ({ activities }) => {
-  console.log(activities)
   const generateWeek = () => {
     const containers = []
     const currentWeek = getStartOfCurrentWeekISO()
@@ -15,7 +14,7 @@ const DashboardWeek = ({ activities }) => {
         <DashboardDay
           date={dates[i]}
           day={Moment(currentWeek).add(i, 'd').format('ddd')}
-          activities={activities.filter(activity => activity.date === formatDate(Moment(currentWeek).add(i, 'd')))}
+          activities={activities.filter(activity => activity.date === formatDateDDMM(Moment(currentWeek).add(i, 'd')))}
         />
       )
     }

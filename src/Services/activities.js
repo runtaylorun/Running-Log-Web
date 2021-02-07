@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const createActivity = async (activity) => {
-  await axios.post('http://localhost:5000/activities', { activity, withCredentials: true })
+  await axios.post('http://localhost:5000/activities', { activity }, { withCredentials: true })
 }
 
 export const getActivities = async (query) => {

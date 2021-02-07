@@ -7,12 +7,11 @@ import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO } from '../../Lib/time
 
 const Dashboard = () => {
   const [weeklyActivities, setWeeklyActivities] = useState([])
-
   useEffect(() => {
     const getActivitiesForCurrentWeek = async () => {
       const params = {
-        startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-MM-DD'),
-        endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-MM-DD')
+        startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-DD-MM'),
+        endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-DD-MM')
       }
       try {
         const results = await getActivities(params)

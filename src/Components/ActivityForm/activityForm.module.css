@@ -14,23 +14,57 @@
     width: 80%;
 }
 
-input {
-    background-color: white;
+.textbox {
+    line-height: 40px;
+    background: #fafafa;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 0 20px;
     border: 1px solid #d4d4d4;
-    padding: 5px;
+    font-size: 16px;
+    color: #666;
+}
+
+.button {
+    float: left;
+    font-size: 15px;
+	min-width: 150px;
+	max-width: 250px;
+    display: block;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+	margin: 1em;
+	padding: 8px;
+    border-radius: 5px;
+    background-color: #1f6fdd;
+    border: 2px solid #1f6fdd;
+	color: white;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 select {
-    padding: 5px;
+    line-height: 50px;
+    color: #666;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
     border: 1px solid #d4d4d4;
-    background-color: white;
+    background: #fafafa;
+    font-size: 16px;
+    padding: 10px 25px 10px 25px;
 }
 
 textarea {
-    padding: 5px;
-    background-color: white;
+    line-height: 40px;
+    background: #fafafa;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
     border: 1px solid #d4d4d4;
-    resize: none;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
 }
 
 .inputContainer {

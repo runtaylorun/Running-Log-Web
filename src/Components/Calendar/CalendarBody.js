@@ -1,6 +1,6 @@
 import React from 'react'
 import CalendarDay from './CalendarDay'
-import { formatDate, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
+import { formatDateDDMM, formatDate, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
 import classes from './calendar.module.css'
 
 /*
@@ -32,7 +32,7 @@ const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay, currentMo
         year={currentYear}
         month={currentMonth + 1}
         day={i}
-        activities={userActivities.filter(activity => activity.date === formatDate(`${currentYear}-${currentMonth + 1}-${i}`))}/>)
+        activities={userActivities.filter(activity => activity.date === formatDateDDMM(`${currentYear}-${currentMonth + 1}-${i}`))}/>)
 
       if (endOfWeek % 7 === 0) {
         const startOfWeekDate = getStartOfCurrentWeekISO(formatDate(`${currentYear}-${currentMonth + 1}-${i}`))
