@@ -1,0 +1,93 @@
+.page {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 75%;
+    width: 50%;
+}
+
+.profilePicContainer {
+    display: flex;
+    align-items: center;
+}
+
+.profilePicContainer p {
+    font-size: 11px;
+    text-align: left;
+    color: grey;
+}
+
+.profilePicLabels {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    float: left;
+    font-size: 15px;
+	min-width: 150px;
+	max-width: 250px;
+    display: block;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+	margin: 1em;
+	padding: 8px;
+    border-radius: 5px;
+    background-color: #1f6fdd;
+    border: 2px solid #1f6fdd;
+	color: white;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.select {
+    line-height: 50px;
+    color: #666;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    border: 1px solid #d4d4d4;
+    background: #fafafa;
+    font-size: 16px;
+    padding: 10px 25px 10px 25px;
+}
+
+.textbox {
+    line-height: 40px;
+    background: #fafafa;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    border: 1px solid #d4d4d4;
+    color: #666;
+}
+
+.inputContainer {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profilePictureContainer {
+    display: flex;
+    align-items: center;
+}
+
+.profilePictureContainer button {
+    padding: 5px 15px 5px 15px;
+    background-color: white;
+    border: 1px solid hsl(255, 0%, 80%);
+}
