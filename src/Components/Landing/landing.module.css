@@ -1,0 +1,74 @@
+.page {
+    height: 100%;
+    background-color: hsl(190, 85%, 50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.landingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 400px;
+    width: 600px;
+    color: white;
+}
+
+.appName {
+    position: absolute;
+    color: white;
+    top: 5px;
+    left: 15px;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.phrase {
+    font-size: 60px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.shortStatement {
+    width: 550px;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.button {
+    background-color: transparent;
+    border: 2px solid white;
+    padding: 5px 30px 5px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s
+}
+
+.button .link {
+    color: white
+}
+
+.link {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+.button:hover a {
+    color: hsl(190, 85%, 50%)
+}
