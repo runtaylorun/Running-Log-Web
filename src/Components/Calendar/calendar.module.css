@@ -1,0 +1,133 @@
+.calendarPage {
+	display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+	height: 100%;
+	color: #24182D
+}
+
+.calendarViewContainer {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.calendarContainer {
+	background-color: white;
+	width: 90%;
+	border-radius: 10px;
+	margin-top: 20px;
+	height: 95%;
+	box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.calendarHeaderContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.calendarDateHeader {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	background-color: white;
+	text-align: center;
+	margin: 10px 0 10px 0;
+	height: 50%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.calendarDateHeader h2 {
+	margin: 0;
+}
+
+.calendarDaysHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	border: 1px solid #d4d4d4;
+	border-right: none;
+	height: 50%;
+	border-left: none;
+}
+
+.calendarDaysHeader h3 {
+	margin: 0;
+	width: 13%;
+	text-align: center;
+}
+
+.calendarBodyContainer {
+	display: flex;
+	flex-direction: row;
+	height: 80%;
+	flex-wrap: wrap;
+}
+
+.dayContainer {
+	width: 12.5%;
+	height: 16.7%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+	border-bottom: 1px solid #d4d4d4;
+	border-right: 1px solid #d4d4d4;
+}
+
+.dayContainer h4 {
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.calendarFooter {
+	display: flex;
+	width: 100%;
+	height: 10%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.calendarFooter h2 {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.runContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+
+}
+
+.runContainer h4 {
+	margin: 0;
+	width: 25%;
+	text-align: center;
+}
+
+.runContainerHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	color: grey
+}
+
+.runContainerHeader h4 {
+	margin: 0;
+	width: 25%;
+	text-align: center;
+}

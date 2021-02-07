@@ -1,0 +1,74 @@
+.dashboardPage {
+    display: grid;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.weekContainer {
+    margin-top: 20px;
+    display: 'flex';
+    flex-direction: 'column';
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+    justify-self: center;
+    width: 85%;
+    height: 50%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+	box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.weekHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 10%;
+}
+
+.dayContainer {
+    margin: 20px 0 20px 0;
+}
+
+.weekHeader h3 {
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+    width: 13%;
+}
+
+.weekBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+.weekFooter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 13%;
+    border: 1px solid #d4d4d4;
+    height: 75%;
+    margin: 20px 0 20px 0;
+}
+
+.activity {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+}
