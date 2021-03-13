@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Progress } from 'semantic-ui-react'
+import { formatDateMMDD } from '../../Lib/time'
 import classes from './gear.module.css'
 
 const GearCard = ({ gear, size }) => {
@@ -12,7 +13,7 @@ const GearCard = ({ gear, size }) => {
       <div className={classes.cardDetailsContainer}>
         <p>{`${gear.brand} ${gear.model}`}</p>
         <p>{gear.colorway}</p>
-        <p>03/05/2000 - Current</p>
+        <p>{formatDateMMDD(gear?.dateAdded)} - Current</p>
       </div>
       <div className={classes.cardProgressContainer}>
         <Progress size='medium' value={gear.miles} total={gear.maxMiles} label={`${gear.miles} / ${gear.maxMiles} Mi`} />
