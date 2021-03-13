@@ -71,7 +71,13 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+    padding: 10px;
 }
+
+.inputContainer label {
+    margin: 10px 0 5px 0;
+}
+
 
 .formRow1 {
     width: 50%;

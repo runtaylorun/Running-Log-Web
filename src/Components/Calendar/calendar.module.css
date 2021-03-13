@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 0;
+    background-color: hsl(0, 0%, 96%);
 	height: 100%;
 	color: #24182D
 }
@@ -21,13 +22,14 @@
 	border-radius: 10px;
 	margin-top: 20px;
 	height: 95%;
-	box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.2);
+	background-color: hsl(210, 100%, 50%);
 }
 
 .calendarHeaderContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	height: 10%;
 }
 
 .calendarDateHeader {
@@ -35,9 +37,9 @@
 	justify-content: center;
 	flex-direction: row;
 	align-items: center;
-	background-color: white;
+	background-color: hsl(210, 100%, 50%);
 	text-align: center;
-	margin: 10px 0 10px 0;
+	padding: 10px 0 10px 0;
 	height: 50%;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -51,10 +53,11 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	border: 1px solid #d4d4d4;
 	border-right: none;
 	height: 50%;
 	border-left: none;
+	background-color: hsl(210, 100%, 50%);
+
 }
 
 .calendarDaysHeader h3 {
@@ -68,6 +71,7 @@
 	flex-direction: row;
 	height: 80%;
 	flex-wrap: wrap;
+	margin: 20px;
 }
 
 .dayContainer {
@@ -78,8 +82,8 @@
 	flex-direction: column;
 	align-items: center;
 	flex-grow: 1;
-	border-bottom: 1px solid #d4d4d4;
-	border-right: 1px solid #d4d4d4;
+	border: 1px solid #d4d4d4;
+	background-color: white;
 }
 
 .dayContainer h4 {
@@ -90,10 +94,14 @@
 .calendarFooter {
 	display: flex;
 	width: 100%;
-	height: 10%;
+	height: 5%;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	background-color: hsl(210, 100%, 50%);
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
 }
 
 .calendarFooter h2 {
