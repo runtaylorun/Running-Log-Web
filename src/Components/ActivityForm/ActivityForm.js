@@ -1,74 +1,96 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 import { createActivity, getActivity, updateActivity } from '../../Services/activities'
+import { getGear } from '../../Services/gear'
 import { calculatePacePerMile, calculatePacePerKilometer } from '../../Lib/pace'
+import { formatDateYYMMDD } from '../../Lib/time'
+import { useForm } from 'react-hook-form'
 import classes from './activityForm.module.css'
 
 const ActivityForm = () => {
-  const { day, month, year, activityId } = useParams()
-  const [distance, setDistance] = useState(0)
-  const [activityTitle, setActivityTitle] = useState('')
-
-  const [date, setDate] = useState('')
-  const [elapsedTime, setElapsedTime] = useState('')
-  const [comments, setComments] = useState('')
-  const [difficultyRating, setDifficultyRating] = useState(0)
-  const [distanceUnit, setDistanceUnit] = useState('Mi')
-  const [type, setType] = useState(1)
+  const { day, month, year, activityId = 0 } = useParams()
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [gear, setGear] = useState([])
   const [pacePerMile, setPacePerMile] = useState('')
   const [pacePerKm, setPacePerKm] = useState('')
 
-  useEffect(() => {
-    const getActivity = async () => {
-      try {
-        const response = await getActivity(activityId)
+  const { register, handleSubmit, watch, errors, reset } = useForm({
+    defaultValues: {
+      id: 0,
+      distance: 0,
+      title: '',
+      date: `${month}-${day}-${year}`,
+      elapsedTime: '',
+      comments: '',
+      difficultyRating: 1,
+      distanceUnit: 'Mi',
+      type: 1,
+      gearId: null
+    }
+  })
 
-        if (response) {
-          setDistance(response.data[0].distance)
-          setActivityTitle(response.data[0].activityTitle)
-          setDate(response.data[0].date)
-          setElapsedTime(response.data[0].elapsedTime)
-          setComments(response.data[0].comments)
-          setDifficultyRating(response.data[0].difficultyRating)
-          setDistanceUnit(response.data[0].distanceUnit)
-          setType(response.data[0].activityCode)
+  const watchTime = watch('elapsedTime', '00:00:00')
+  const watchDistance = watch('distance', 0)
+  const watchDistanceUnit = watch('distanceUnit', 'Mi')
+
+  useEffect(() => {
+    const loadActivity = async () => {
+      try {
+        const activityResponse = await getActivity(activityId)
+        let formData
+        formData = { ...activityResponse?.data[0] }
+
+        if (!formData.date) {
+          formData = { ...formData, date: `${month}-${day}-${year}`, distance: 0 }
         }
+
+        reset(formData)
       } catch (error) {
-        console.log(error)
+        console.log('Error getting activity for activity form', error)
       }
     }
 
-    if (activityId) {
-      getActivity()
-    } else {
-      setDate(`${year}-${month}-${day}`)
+    const loadGear = async () => {
+      try {
+        const gearResponse = await getGear()
+
+        setGear(gearResponse?.data)
+      } catch (error) {
+        console.log('Error getting gear for activity form')
+      }
     }
+
+    loadGear()
+    loadActivity()
   }, [])
 
-  const submitHandler = async (event) => {
-    event.preventDefault()
-
-    const activity = {
-      title: activityTitle,
-      type,
-      distanceUnit,
-      distance: parseInt(distance, 10),
-      date,
-      elapsedTime,
-      comments,
-      difficultyRating: parseInt(difficultyRating, 10),
+  const onSubmit = async (data) => {
+    const activityToSubmit = {
+      activityId: activityId ?? 0,
+      title: data.title,
+      type: parseInt(data.type, 10),
+      distanceUnit: data.distanceUnit,
+      distance: parseInt(data.distance),
+      date: formatDateYYMMDD(data.date),
+      elapsedTime: data.elapsedTime,
+      comments: data.comments,
+      gearId: parseInt(data.gearId, 10),
+      difficultyRating: parseInt(data.difficultyRating, 10)
     }
 
-    if (activityId) {
-      activity.activityId = activityId
-      await updateActivity(activity)
-    } else {
-      await createActivity(activity)
-    }
-
+    activityId ? await updateActivity(activityToSubmit) : await createActivity(activityToSubmit)
     setFormSubmitted(true)
+  }
+
+  const updatePace = () => {
+    setPacePerMile(calculatePacePerMile(watchTime, watchDistance, watchDistanceUnit))
+    setPacePerKm(calculatePacePerKilometer(watchTime, watchDistance, watchDistanceUnit))
+  }
+
+  const resetForm = () => {
+    reset()
+    setPacePerKm('')
+    setPacePerMile('')
   }
 
   return (
@@ -78,15 +100,15 @@ const ActivityForm = () => {
         <div className={classes.pageHeader}>
           <h1>Activity Form</h1>
         </div>
-        <form onSubmit={submitHandler} className={classes.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div className={classes.formRow1}>
             <div className={classes.inputContainer}>
               <label>Activity Title</label>
-              <input className={classes.textbox} value={activityTitle} onChange={(e) => setActivityTitle(e.target.value)} type='text' />
+              <input name='title' className={classes.textbox} ref={register} />
             </div>
             <div className={classes.inputContainer}>
               <label>Type</label>
-              <select onChange={(e) => setType(e.target.value)} value={type}>
+              <select ref={register} name='type'>
                 <option value='1'>Running</option>
                 <option value='2'>Walking</option>
                 <option value='3'>Biking</option>
@@ -97,11 +119,11 @@ const ActivityForm = () => {
           <div className={classes.formRow2}>
             <div className={classes.inputContainer}>
               <label>Distance</label>
-              <input className={classes.textbox} value={distance} onChange={(e) => setDistance(e.target.value)} type='text' />
+              <input onChange={updatePace} className={classes.textbox} name='distance' ref={register} />
             </div>
             <div className={classes.inputContainer}>
               <label>Distance Unit</label>
-              <select onChange={(e) => setDistanceUnit(e.target.value)} value={distanceUnit}>
+              <select ref={register} name='distanceUnit'>
                 <option value='Mi'>Mi</option>
                 <option value='Km'>Km</option>
               </select>
@@ -110,23 +132,23 @@ const ActivityForm = () => {
           <div className={classes.formRow3}>
             <div className={classes.inputContainer}>
               <label>Date</label>
-              <input className={classes.textbox} value={date} onChange={(e) => setDate(e.target.value)} type='text' />
+              <input className={classes.textbox} name='date' ref={register} />
             </div>
             <div className={classes.inputContainer}>
               <label>Elapsed Time</label>
-              <input className={classes.textbox} value={elapsedTime} onChange={(e) => { setElapsedTime(e.target.value); setPacePerMile(calculatePacePerMile(elapsedTime, { distance, distanceUnit })); setPacePerKm(calculatePacePerKilometer(elapsedTime, { distance, distanceUnit })) }} type='text' />
+              <input onChange={updatePace} placeholder="hh:mm:ss" className={classes.textbox} ref={register} name='elapsedTime' />
             </div>
           </div>
           <div className={classes.formRow4}>
             <div className={classes.inputContainer}>
               <label>Pace per Mi</label>
-              <input className={classes.textbox} type='text' readOnly value={pacePerMile}></input>
+              <input className={classes.textbox} readOnly value={pacePerMile}></input>
               <label>Pace per Km</label>
-              <input className={classes.textbox} type='text' readOnly value={pacePerKm}></input>
+              <input className={classes.textbox} readOnly value={pacePerKm}></input>
             </div>
             <div className={classes.inputContainer}>
               <label>Difficulty Rating</label>
-              <select value={difficultyRating} onChange={(e) => setDifficultyRating(e.target.value)} type='text' >
+              <select name='difficultyRating' ref={register} >
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -137,20 +159,23 @@ const ActivityForm = () => {
                 <option value='8'>8</option>
                 <option value='9'>9</option>
                 <option value='10'>10</option>
-
+              </select>
+              <label>Gear</label>
+              <select defaultValue={0} name='gearId' ref={register}>
+                <option value={0}></option>
+                {gear.map((gear) => <option key={gear.id} value={gear.id}>{`${gear.brand} ${gear.model}`}</option>)}
               </select>
             </div>
           </div>
           <div className={classes.formRow5}>
             <div className={classes.inputContainer}>
               <label>Comments</label>
-              <textarea value={comments} onChange={(e) => setComments(e.target.value)} />
+              <textarea rows={5} style={{ resize: 'none' }} name='comments' ref={register} />
             </div>
           </div>
-
           <div style={{ marginTop: 20 }} className={classes.formButtons}>
             <button className={classes.button} type='submit'>Submit</button>
-            <button className={classes.button} type='reset'>Reset</button>
+            <button onClick={resetForm} className={classes.button}>Reset</button>
           </div>
         </form>
       </div>
