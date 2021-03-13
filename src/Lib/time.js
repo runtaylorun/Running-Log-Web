@@ -1,4 +1,7 @@
 import Moment from 'moment'
+import momentDurationFormatSetup from 'moment-duration-format'
+
+momentDurationFormatSetup(Moment)
 
 export const getStartOfCurrentWeekISO = (date) => {
   if (date) {
@@ -39,19 +42,18 @@ export const getDatesForCurrentWeek = () => {
   return dates
 }
 
-export const formatDate = (dateString) => {
+export const formatDateMMDD = (dateString) => {
+  return Moment(dateString).format('MM-DD-YYYY')
+}
+
+export const formatDateYYMMDD = (dateString) => {
   return Moment(dateString).format('YYYY-MM-DD')
 }
 
-export const formatDateDDMM = (dateString) => {
-  return Moment(dateString).format('YYYY-DD-MM')
-}
-
 export const secondsToHourMinuteSeconds = (seconds) => {
-  return Moment('2015-01-01').startOf('day').seconds(seconds).format('hh:mm:ss')
-
+  return Moment.duration(seconds, 'seconds').format('h:mm:ss')
 }
 
 export const getCurrentDate = () => {
-  return formatDate(Moment())
+  return formatDateMMDD(Moment())
 }
