@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getIsUserAuthenticated } from './Redux/Reducers/selectors'
 import Landing from './Components/Landing/landing'
@@ -9,6 +9,7 @@ import Register from './Components/Auth/Register'
 import Forgot from './Components/Forgot/Forgot'
 import History from './Components/History/History'
 import ActivityView from './Components/Activity/ActivityView'
+import PageLoader from './Components/Shared/PageLoader'
 import Reset from './Components/Auth/reset'
 import { setAuthentication } from './Redux/Actions/user'
 import ActivityForm from './Components/ActivityForm/ActivityForm'
@@ -21,6 +22,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 function App () {
   const isUserAuthenticated = useSelector(getIsUserAuthenticated)
+  const [checkingAuthentication, setCheckingAuthentication] = useState(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,6 +31,7 @@ function App () {
         const result = await checkAuthentication()
 
         dispatch(setAuthentication(result?.data))
+        setCheckingAuthentication(false)
       } catch (error) {
         console.log('Error authenticating')
       }
@@ -39,7 +42,8 @@ function App () {
 
   const PrivateRoute = ({ children, ...rest }) => {
     return (
-      <Route
+      checkingAuthentication ? <PageLoader label='Authenticating' />
+        : <Route
         {...rest}
         render={({ location }) =>
           isUserAuthenticated
@@ -63,38 +67,39 @@ function App () {
     <>
       <Navbar />
       <Switch>
-        <Route component={Landing} exact path='/' />
-        <Route component={Login} exact path='/login' />
-        <Route component={Register} exact path='/register' />
-        <Route component={Forgot} exact path='/forgot' />
-        <Route component={Reset} exact path='/forgot/:token' />
-        <PrivateRoute exact path='/dashboard'>
+        <PrivateRoute path='/dashboard'>
           <Dashboard />
         </PrivateRoute>
-        <PrivateRoute exact path='/calendar' >
+        <PrivateRoute path='/calendar' >
           <CalendarPage />
         </PrivateRoute>
-        <PrivateRoute exact path='/history'>
+        <PrivateRoute path='/history'>
           <History />
         </PrivateRoute>
-        <PrivateRoute exact path='/gear'>
+        <PrivateRoute path='/gear'>
           <Gear />
         </PrivateRoute>
-        <PrivateRoute exact path='/settings'>
+        <PrivateRoute path='/settings'>
           <Settings />
         </PrivateRoute>
-        <PrivateRoute exact path='/gear/gearForm/:gearId'>
+        <PrivateRoute path='/gear/gearForm/:gearId'>
           <GearForm />
         </PrivateRoute>
-        <PrivateRoute exact path='/activityView/:activityId'>
+        <PrivateRoute path='/activityView/:activityId'>
           <ActivityView />
         </PrivateRoute>
-        <PrivateRoute exact path='/activityForm/:activityId'>
+        <PrivateRoute path='/activityForm/:month/:day/:year'>
           <ActivityForm />
         </PrivateRoute>
-        <PrivateRoute exact path='/activityForm/:day/:month/:year'>
+        <PrivateRoute path='/activityForm/:activityId'>
           <ActivityForm />
         </PrivateRoute>
+
+        <Route component={Landing} exact path='/' />
+        <Route component={Login} path='/login' />
+        <Route component={Register} path='/register' />
+        <Route component={Forgot} path='/forgot' />
+        <Route component={Reset} path='/forgot/:token' />
       </Switch>
     </>
   )
