@@ -1,10 +1,11 @@
 import React from 'react'
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setAuthentication } from '../../Redux/Actions/user'
 import { signOut as signOutCall } from '../../Services/auth'
 import { useSelector, useDispatch } from 'react-redux'
+import classes from './navbar.module.css'
 
 const Navbar = (props) => {
   const isAuthenticated = useSelector(getIsUserAuthenticated)
@@ -12,7 +13,6 @@ const Navbar = (props) => {
   const location = useLocation()
   const history = useHistory()
   const nonAuthRoutes = ['/', '/login', '/register', '/forgot']
-  const linkStyle = { color: '#24182D' }
 
   const signOut = async () => {
     try {
@@ -29,48 +29,49 @@ const Navbar = (props) => {
   return isAuthenticated && !nonAuthRoutes.includes(location.pathname)
     ? (
     <Sidebar
-      style={{
-        display: 'inline',
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        position: 'relative',
-        height: '100%',
-        flexGrow: 1,
-        float: 'left'
-      }}
+      className={classes.sidebar}
       vertical
       icon='labeled'
       width='thin'
       visible
       as={Menu}
     >
-      <h1 style={{ color: '#1F6FDD' }}>Log2Win</h1>
-      <Menu.Item as='a'>
-        <Icon style={linkStyle} name='home' size='big' />
-        <Link style={linkStyle} to='/dashboard'>Dashboard</Link>
+      <h1 className={classes.navHeader}>Log2Win</h1>
+      <Menu.Item>
+        <NavLink activeClassName={classes.activeLink} active className={classes.link} to='/dashboard'>
+          <Icon name='home' size='big' />
+          <span>Dashboard</span>
+        </NavLink>
       </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon style={linkStyle} name='calendar' size='big' />
-        <Link style={linkStyle} to='/Calendar'>Calendar</Link>
+      <Menu.Item>
+        <NavLink activeClassName={classes.activeLink} className={classes.link} to='/Calendar'>
+          <Icon name='calendar' size='big' />
+          Calendar
+      </NavLink>
       </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon style={linkStyle} name='history' size='big' />
-        <Link style={linkStyle} to='/History'>History</Link>
+      <Menu.Item>
+        <NavLink activeClassName={classes.activeLink} className={classes.link} to='/History'>
+          <Icon name='history' size='big' />
+          History
+        </NavLink>
       </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon style={linkStyle} name='shopping bag' size='big' />
-        <Link style={linkStyle} to='/gear'>Gear</Link>
+      <Menu.Item>
+        <NavLink activeClassName={classes.activeLink} className={classes.link} to='/gear'>
+          <Icon name='shopping bag' size='big' />
+          Gear
+        </NavLink>
       </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon style={linkStyle} name='setting' size='big' />
-        <Link style={linkStyle} to='/settings'>Settings</Link>
+      <Menu.Item>
+        <NavLink activeClassName={classes.activeLink} className={classes.link} to='/settings'>
+          <Icon name='setting' size='big' />
+          Settings
+        </NavLink>
       </Menu.Item>
-      <Menu.Item onClick={() => signOut()} as='a'>
-        <Icon style={linkStyle} name='sign out' size='big' />
-        <Link style={linkStyle}>
-          Sign Out
-        </Link>
+      <Menu.Item onClick={() => signOut()}>
+        <NavLink to='/login' className={classes.link}>
+          <Icon name='sign out' size='big' />
+          <span> Sign Out </span>
+        </NavLink>
       </Menu.Item>
     </Sidebar>
       )
