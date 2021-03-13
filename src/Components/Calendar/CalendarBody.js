@@ -1,6 +1,6 @@
 import React from 'react'
 import CalendarDay from './CalendarDay'
-import { formatDateDDMM, formatDate, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
+import { formatDateMMDD, getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, dateIsBefore, dateIsAfter } from '../../Lib/time'
 import classes from './calendar.module.css'
 
 /*
@@ -32,11 +32,11 @@ const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay, currentMo
         year={currentYear}
         month={currentMonth + 1}
         day={i}
-        activities={userActivities.filter(activity => activity.date === formatDateDDMM(`${currentYear}-${currentMonth + 1}-${i}`))}/>)
+        activities={userActivities.filter(activity => activity.date === formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))}/>)
 
       if (endOfWeek % 7 === 0) {
-        const startOfWeekDate = getStartOfCurrentWeekISO(formatDate(`${currentYear}-${currentMonth + 1}-${i}`))
-        const endOfWeekDate = getEndOfCurrentWeekISO(formatDate(`${currentYear}-${currentMonth + 1}-${i}`))
+        const startOfWeekDate = getStartOfCurrentWeekISO(formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))
+        const endOfWeekDate = getEndOfCurrentWeekISO(formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))
 
         containers.push(<CalendarDay day={endOfWeek / 7} weeklyBreakdown activities={userActivities.filter(activity => dateIsAfter(activity.date, startOfWeekDate) && dateIsBefore(activity.date, endOfWeekDate))} />)
       }

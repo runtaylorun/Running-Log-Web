@@ -24,7 +24,7 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
         <h2 style={{ color: nextMonth ? '#a1a1a1' : 'black', textAlign: 'left' }}>{`${mileageTotal} ${distanceUnit}`}</h2>
       </div>
       <div style={{ display: 'flex' }}>
-        <Link style={{ visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} to={`/activityForm/${day}/${month}/${year}`}>
+        <Link style={{ visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} to={`/activityForm/${month}/${day}/${year}`}>
           <Button size='mini' icon='plus' style={{ marginBottom: 8, visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} />
         </Link>
         <Modal
