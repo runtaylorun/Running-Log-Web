@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import DashboardWeek from './DashboardWeek'
 import Moment from 'moment'
 import classes from './dashboard.module.css'
+import GearSummary from './GearSummary'
+import MileageSummary from './MileageSummary'
+import OffDaySummary from './OffDaySummary'
 import { getActivities } from '../../Services/activities'
 import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO } from '../../Lib/time'
 
@@ -10,8 +13,8 @@ const Dashboard = () => {
   useEffect(() => {
     const getActivitiesForCurrentWeek = async () => {
       const params = {
-        startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-DD-MM'),
-        endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-DD-MM')
+        startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-MM-DD'),
+        endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-MM-DD')
       }
       try {
         const results = await getActivities(params)
@@ -25,9 +28,13 @@ const Dashboard = () => {
 
     getActivitiesForCurrentWeek()
   }, [])
+
   return (
     <div className={classes.dashboardPage}>
-      <DashboardWeek activities={weeklyActivities}/>
+        <DashboardWeek activities={weeklyActivities}/>
+        <GearSummary />
+        <MileageSummary />
+        <OffDaySummary />
     </div>
   )
 }
