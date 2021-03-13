@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { calculatePacePerMile } from '../../Lib/pace'
 import { getActivities } from '../../Services/activities'
 import classes from './history.module.css'
 
 const History = () => {
-  const runs = [
+  /* const runs = [
     {
       date: '11-04-20',
       type: 'Run',
@@ -97,9 +98,9 @@ const History = () => {
       distance: 3,
       activityId: 13
     }
-  ]
+  ] */
 
-  const [activities, setActivities] = useState(runs)
+  const [activities, setActivities] = useState([])
 
   useEffect(() => {
     const loadActivities = async () => {
@@ -129,10 +130,10 @@ const History = () => {
                   <tr key={activity.activityId} className={classes.tableBodyRow}>
                   <td>{activity.date}</td>
                   <td>{activity.type}</td>
-                  <td>{activity.activityTitle}</td>
-                  <td style={{ textAlign: 'right' }}>{activity.distance}</td>
-                  <td style={{ textAlign: 'right' }}>3:52</td>
-                  <td><a href={`/activityView/${activity.activityId}`}>View</a></td>
+                  <td>{activity.title}</td>
+                  <td style={{ textAlign: 'right' }}>{`${activity.distance} Mi`}</td>
+                  <td style={{ textAlign: 'right' }}>{calculatePacePerMile(activity.elapsedTime, activity.distance, 'Mi')}</td>
+                  <td><a href={`/activityView/${activity.id}`}>View</a></td>
                   </tr>
                 ))}
           </table>
