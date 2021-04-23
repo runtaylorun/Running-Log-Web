@@ -1,12 +1,13 @@
 .historyPageContainer {
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .historyTable {
-    margin-top: 50px;
+    margin-top: 10px;
     border-collapse: collapse;
     background-color: hsl(255, 0%, 95%);
     width: 50%;
