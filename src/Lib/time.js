@@ -50,6 +50,10 @@ export const formatDateYYMMDD = (dateString) => {
   return Moment(dateString).format('YYYY-MM-DD')
 }
 
+export const HMStoSeconds = (hours, minutes, seconds) => {
+  return ((hours * 60) * 60) + (minutes * 60) + seconds
+}
+
 export const secondsToHourMinuteSeconds = (seconds) => {
   return Moment.duration(seconds, 'seconds').format('h:mm:ss')
 }

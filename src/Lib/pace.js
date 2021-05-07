@@ -1,8 +1,7 @@
-import Moment from 'moment'
-import { secondsToHourMinuteSeconds } from './time'
+import { secondsToHourMinuteSeconds, HMStoSeconds } from './time'
 
-export const calculatePacePerMile = (time, distance, distanceUnit) => {
-  const timeInSeconds = timeToSeconds(time)
+export const calculatePacePerMile = (hours = 0, minutes = 0, seconds = 0, distance, distanceUnit) => {
+  const timeInSeconds = HMStoSeconds(hours, minutes, seconds)
 
   if (distanceUnit === 'Km') {
     const convertedDistance = distance / 1.609344
@@ -14,8 +13,8 @@ export const calculatePacePerMile = (time, distance, distanceUnit) => {
   }
 }
 
-export const calculatePacePerKilometer = (time, distance, distanceUnit) => {
-  const timeInSeconds = timeToSeconds(time)
+export const calculatePacePerKilometer = (hours = 0, minutes = 0, seconds = 0, distance, distanceUnit) => {
+  const timeInSeconds = HMStoSeconds(hours, minutes, seconds)
 
   if (distanceUnit === 'Mi') {
     const convertedDistance = distance * 1.609344
@@ -25,8 +24,4 @@ export const calculatePacePerKilometer = (time, distance, distanceUnit) => {
     const averageSecondsPerMile = timeInSeconds / distance
     return secondsToHourMinuteSeconds(averageSecondsPerMile)
   }
-}
-
-export const timeToSeconds = (time) => {
-  return Moment.duration(time).asSeconds()
 }

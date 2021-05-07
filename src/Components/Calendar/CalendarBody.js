@@ -32,13 +32,13 @@ const CalendarBody = ({ daysThisMonth, startingDay, previousEndingDay, currentMo
         year={currentYear}
         month={currentMonth + 1}
         day={i}
-        activities={userActivities.filter(activity => activity.date === formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))}/>)
+        activities={userActivities?.filter(activity => activity.date === formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))}/>)
 
       if (endOfWeek % 7 === 0) {
         const startOfWeekDate = getStartOfCurrentWeekISO(formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))
         const endOfWeekDate = getEndOfCurrentWeekISO(formatDateMMDD(`${currentMonth + 1}-${i}-${currentYear}`))
 
-        containers.push(<CalendarDay day={endOfWeek / 7} weeklyBreakdown activities={userActivities.filter(activity => dateIsAfter(activity.date, startOfWeekDate) && dateIsBefore(activity.date, endOfWeekDate))} />)
+        containers.push(<CalendarDay day={endOfWeek / 7} weeklyBreakdown activities={userActivities?.filter(activity => dateIsAfter(activity.date, startOfWeekDate) && dateIsBefore(activity.date, endOfWeekDate))} />)
       }
     }
 

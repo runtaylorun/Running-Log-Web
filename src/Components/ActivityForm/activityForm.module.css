@@ -80,7 +80,7 @@ textarea {
 
 
 .formRow1 {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -95,7 +95,7 @@ textarea {
 }
 
 .formRow2 {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -110,7 +110,7 @@ textarea {
 }
 
 .formRow3 {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -124,7 +124,7 @@ textarea {
 }
 
 .formRow4 {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -139,7 +139,7 @@ textarea {
 }
 
 .formRow5 {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

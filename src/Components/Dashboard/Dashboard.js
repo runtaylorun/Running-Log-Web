@@ -1,40 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import DashboardWeek from './DashboardWeek'
 import Moment from 'moment'
 import classes from './dashboard.module.css'
 import GearSummary from './GearSummary'
 import MileageSummary from './MileageSummary'
 import OffDaySummary from './OffDaySummary'
-import { getActivities } from '../../Services/activities'
-import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO } from '../../Lib/time'
+import useActivities from '../../Hooks/useActivities'
+import { getStartOfCurrentWeekISO, getEndOfCurrentWeekISO, getCurrentDate } from '../../Lib/time'
 
 const Dashboard = () => {
-  const [weeklyActivities, setWeeklyActivities] = useState([])
-  useEffect(() => {
-    const getActivitiesForCurrentWeek = async () => {
-      const params = {
-        startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-MM-DD'),
-        endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-MM-DD')
-      }
-      try {
-        const results = await getActivities(params)
-        if (results) {
-          setWeeklyActivities([...results.data])
-        }
-      } catch (error) {
-        console.log('Error fetching activities for this week', error)
-      }
-    }
-
-    getActivitiesForCurrentWeek()
-  }, [])
+  const OFF_DAY = '5'
+  const [weeklyActivities] = useActivities({ startDate: Moment(getStartOfCurrentWeekISO()).format('YYYY-MM-DD'), endDate: Moment(getEndOfCurrentWeekISO()).format('yyyy-MM-DD') })
+  const [lastOffDay] = useActivities({ type: OFF_DAY, endDate: Moment(getCurrentDate()).format('YYYY-MM-DD'), limit: 1 })
 
   return (
     <div className={classes.dashboardPage}>
-        <DashboardWeek activities={weeklyActivities}/>
-        <GearSummary />
-        <MileageSummary />
-        <OffDaySummary />
+      <DashboardWeek activities={weeklyActivities} />
+      <GearSummary />
+      <MileageSummary />
+      <OffDaySummary offDay={lastOffDay?.[0]} />
     </div>
   )
 }

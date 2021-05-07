@@ -52,6 +52,12 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.button:disabled {
+    background-color: #a5c5f3;
+    border-color: #a5c5f3;
+    cursor: not-allowed;
+}
+
 .select {
     line-height: 50px;
     color: #666;
@@ -90,4 +96,9 @@
     padding: 5px 15px 5px 15px;
     background-color: white;
     border: 1px solid hsl(255, 0%, 80%);
+}
+
+input:disabled {
+    cursor: not-allowed;
+    color: #666;
 }

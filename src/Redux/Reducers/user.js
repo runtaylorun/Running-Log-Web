@@ -1,7 +1,8 @@
-import { SET_USER, SET_AUTHENTICATION } from '../Actions/actionTypes'
+import { SET_USER, SET_AUTHENTICATION, SET_MEASUREMENT_SYSTEM } from '../Actions/actionTypes'
 
 const initialState = {
-  authenticated: false
+  authenticated: false,
+  measurementSystem: 'Metric'
 }
 
 const userReducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         authenticated: action.payload
+      }
+    case SET_MEASUREMENT_SYSTEM:
+      return {
+        ...state,
+        measurementSystem: action.payload
       }
     default:
       return state

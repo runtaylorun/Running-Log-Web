@@ -1,21 +1,17 @@
 import axios from 'axios'
 
-export const createActivity = async (activity) => {
-  await axios.post('http://localhost:5000/activities', { activity }, { withCredentials: true })
+export const postActivity = async (activity) => {
+  return await axios.post('http://localhost:5000/activities', { activity }, { withCredentials: true })
 }
 
 export const getActivities = async (query) => {
-  const result = await axios.get('http://localhost:5000/activities', { params: query, withCredentials: true })
-
-  return result
+  return await axios.get('http://localhost:5000/activities', { params: query, withCredentials: true })
 }
 
 export const getActivity = async (activityId) => {
-  const result = await axios.get(`http://localhost:5000/activities/${activityId}`, { withCredentials: true })
-
-  return result
+  return await axios.get(`http://localhost:5000/activities/${activityId}`, { withCredentials: true })
 }
 
-export const updateActivity = async (activity) => {
-  await axios.put(`http://localhost:5000/activities/${activity.activityId}`, { activity })
+export const putActivity = async (activity) => {
+  return await axios.put(`http://localhost:5000/activities/${activity.id}`, { activity })
 }

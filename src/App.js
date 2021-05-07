@@ -11,9 +11,10 @@ import History from './Components/History/History'
 import ActivityView from './Components/Activity/ActivityView'
 import PageLoader from './Components/Shared/PageLoader'
 import Reset from './Components/Auth/reset'
-import { setAuthentication } from './Redux/Actions/user'
+import { setAuthentication, setMeasurementSystem } from './Redux/Actions/user'
 import ActivityForm from './Components/ActivityForm/ActivityForm'
 import { checkAuthentication } from './Services/auth'
+import { getUserDetails as getUserDetailsAPI } from './Services/user'
 import GearForm from './Components/Gear/GearForm'
 import Gear from './Components/Gear/Gear'
 import Settings from './Components/Settings/Settings'
@@ -33,12 +34,30 @@ function App () {
         dispatch(setAuthentication(result?.data))
         setCheckingAuthentication(false)
       } catch (error) {
-        console.log('Error authenticating')
+        console.log('Error authenticating', error)
       }
     }
 
     checkIfAuthenticated()
   }, [])
+
+  const getUserDetails = async () => {
+    try {
+      const result = await getUserDetailsAPI()
+
+      if (result) {
+        dispatch(setMeasurementSystem(result?.data?.measurementSystem))
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (isUserAuthenticated) {
+      getUserDetails()
+    }
+  }, [isUserAuthenticated])
 
   const PrivateRoute = ({ children, ...rest }) => {
     return (
@@ -67,6 +86,12 @@ function App () {
     <>
       <Navbar />
       <Switch>
+      <PrivateRoute path='/gear/gearForm/:gearId'>
+          <GearForm />
+      </PrivateRoute>
+      <PrivateRoute path='/gear'>
+          <Gear />
+      </PrivateRoute>
         <PrivateRoute path='/dashboard'>
           <Dashboard />
         </PrivateRoute>
@@ -76,20 +101,11 @@ function App () {
         <PrivateRoute path='/history'>
           <History />
         </PrivateRoute>
-        <PrivateRoute path='/gear'>
-          <Gear />
-        </PrivateRoute>
         <PrivateRoute path='/settings'>
           <Settings />
         </PrivateRoute>
-        <PrivateRoute path='/gear/gearForm/:gearId'>
-          <GearForm />
-        </PrivateRoute>
         <PrivateRoute path='/activityView/:activityId'>
           <ActivityView />
-        </PrivateRoute>
-        <PrivateRoute path='/activityForm/:month/:day/:year'>
-          <ActivityForm />
         </PrivateRoute>
         <PrivateRoute path='/activityForm/:activityId'>
           <ActivityForm />

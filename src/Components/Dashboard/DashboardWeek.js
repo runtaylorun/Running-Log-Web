@@ -1,10 +1,17 @@
 import React from 'react'
 import classes from './dashboard.module.css'
 import DashboardDay from './DashboardDay'
+import { useSelector } from 'react-redux'
+import { getUserMeasurementSystem } from '../../Redux/Reducers/selectors'
+import { getMileageTotal } from '../../Lib/mileage'
+import { distanceUnits } from '../../Lib/conversions'
 import Moment from 'moment'
 import { getStartOfCurrentWeekISO, getDatesForCurrentWeek, formatDateMMDD } from '../../Lib/time'
 
 const DashboardWeek = ({ activities }) => {
+  const measurementSystem = useSelector(getUserMeasurementSystem)
+  const mileageTotal = getMileageTotal(activities, measurementSystem)
+
   const generateWeek = () => {
     const containers = []
     const currentWeek = getStartOfCurrentWeekISO()
@@ -14,7 +21,7 @@ const DashboardWeek = ({ activities }) => {
         <DashboardDay
           date={dates[i]}
           day={Moment(currentWeek).add(i, 'd').format('ddd')}
-          activities={activities.filter(activity => activity.date === formatDateMMDD(Moment(currentWeek).add(i, 'd')))}
+          activities={activities?.filter(activity => activity.date === formatDateMMDD(Moment(currentWeek).add(i, 'd')))}
         />
       )
     }
@@ -33,7 +40,7 @@ const DashboardWeek = ({ activities }) => {
         {generateWeek()}
       </div>
       <div className={classes.weekFooter}>
-        <h2>{`Weekly Total: ${activities.reduce((accumulator, activity) => { return accumulator + activity.distance }, 0)} Mi`}</h2>
+        <h2>{`Weekly Total: ${mileageTotal} ${distanceUnits[measurementSystem]}`}</h2>
       </div>
     </div>
   )

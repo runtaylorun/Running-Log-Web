@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal } from 'semantic-ui-react'
+import { useSelector } from 'react-redux'
+import { getUserMeasurementSystem } from '../../Redux/Reducers/selectors'
+import { getMileageTotal } from '../../Lib/mileage'
+import { distanceUnits } from '../../Lib/conversions'
 import RunContainer from './RunContainer'
 import classes from './calendar.module.css'
 
 const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdown = false, activities }) => {
-	const [showAddButton, setShowAddButton] = useState(false)
-	const [runsModalOpen, setRunsModalOpen] = useState(false)
+  const [showAddButton, setShowAddButton] = useState(false)
+  const [runsModalOpen, setRunsModalOpen] = useState(false)
+  const measurementSystem = useSelector(getUserMeasurementSystem)
 
-	const mileageTotal = activities && activities.length > 0 ? activities.reduce((accumulator, activity) => { return accumulator + activity.distance }, 0) : 0
-	const distanceUnit = activities && activities.length > 0 ? activities[0].distanceUnit : 'Mi'
-	return (
+  const mileageTotal = getMileageTotal(activities, measurementSystem)
+  return (
 		<div
 			onMouseOut={() => setShowAddButton(false)}
 			onMouseOver={() => setShowAddButton(true)}
@@ -21,10 +25,10 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
 			</div>
 
 			<div>
-				<h2 style={{ color: nextMonth ? '#a1a1a1' : 'black', textAlign: 'left' }}>{`${mileageTotal} ${distanceUnit}`}</h2>
+				<h2 style={{ color: nextMonth ? '#a1a1a1' : 'black', textAlign: 'left' }}>{`${mileageTotal} ${distanceUnits[measurementSystem]}`}</h2>
 			</div>
 			<div style={{ display: 'flex' }}>
-				<Link style={{ visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} to={`/activityForm/${month}/${day}/${year}`}>
+				<Link style={{ visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} to={'/activityForm/0'}>
 					<Button size='mini' icon='plus' style={{ marginBottom: 8, visibility: showAddButton && !weeklyBreakdown && !nextMonth ? 'visible' : 'hidden' }} />
 				</Link>
 				<Modal
@@ -41,8 +45,8 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
 							<h4>Distance</h4>
 							<h4>Actions</h4>
 						</div>
-						{ activities && activities.length > 0 && activities.map(activity => {
-							return <RunContainer
+						{activities?.map(activity => {
+						  return <RunContainer
 								activityId={activity.id}
 								key={activity.id}
 								title={activity.title}
@@ -55,14 +59,14 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
 						}
 						{activities && activities.length > 0 &&
            <div style={{ marginTop: 40, display: 'flex', justifyContent: 'center', width: '100%' }}>
-           	<h1>{`Daily Total: ${mileageTotal} ${activities[0].distanceUnit}`}</h1>
+           	<h1>{`Daily Total: ${mileageTotal} ${distanceUnits[measurementSystem]}`}</h1>
            </div>}
 					</Modal.Content>
 				</Modal>
 			</div>
 
 		</div>
-	)
+  )
 }
 
 export default DayContainer

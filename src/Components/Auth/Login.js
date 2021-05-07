@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setAuthentication } from '../../Redux/Actions/user'
 import ErrorBar from '../Shared/ErrorBar'
-import { authenticateUser } from '../../Services/auth'
+import { loginUser } from '../../Services/auth'
 import { Link, useHistory } from 'react-router-dom'
 import classes from './login.module.css'
 
@@ -52,7 +52,7 @@ const Login = () => {
     }
 
     try {
-      const response = await authenticateUser(user)
+      const response = await loginUser(user)
       if (response.data) {
         dispatch(setAuthentication(true))
       }

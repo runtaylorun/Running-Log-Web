@@ -1,14 +1,11 @@
 import React from 'react'
-import PageLoader from '../Shared/PageLoader'
+// import PageLoader from '../Shared/PageLoader'
 import classes from './calendar.module.css'
 
-const Calendar = ({ children, loading }) => {
+const Calendar = ({ children }) => {
   return (
     <div className={classes.calendarContainer}>
-      {loading
-        ? <PageLoader label='Loading Calendar...' />
-        : children
-      }
+        {children}
     </div>
   )
 }

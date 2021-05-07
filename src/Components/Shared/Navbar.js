@@ -3,7 +3,7 @@ import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
 import { setAuthentication } from '../../Redux/Actions/user'
-import { signOut as signOutCall } from '../../Services/auth'
+import { signOutUser } from '../../Services/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import classes from './navbar.module.css'
 
@@ -16,7 +16,7 @@ const Navbar = (props) => {
 
   const signOut = async () => {
     try {
-      const result = await signOutCall()
+      const result = await signOutUser()
       if (result) {
         dispatch(setAuthentication(false))
         history.push('/login')
