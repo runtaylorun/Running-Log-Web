@@ -103,13 +103,13 @@ const Register = () => {
               {<p style={{ color: 'red' }}>{errors?.passwordConfirmation?.message}</p>}
             </div>
             <div className={classes.formSubmitContainer}>
-              <button type='submit'>Register</button>
+              <button className={classes.button} type='submit'>Register</button>
             </div>
           </form>
         </div>
         <div className={classes.cardFooter}>
-          <Link style={{ color: 'black' }} to='/login'>Already Registered?</Link>
-          <Link style={{ color: 'black', marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
+          <Link className={classes.link} to='/login'>Already Registered?</Link>
+          <Link className={classes.link} style={{ marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
         </div>
       </div>
     </div>

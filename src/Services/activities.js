@@ -15,3 +15,7 @@ export const getActivity = async (activityId) => {
 export const putActivity = async (activity) => {
   return await axios.put(`http://localhost:5000/activities/${activity.id}`, { activity })
 }
+
+export const postActivityFile = async (file) => {
+  return await axios.post('http://localhost:5000/activities/fileUpload', file, { withCredentials: true, headers: { 'Content-Type': 'multipart/form-data' } })
+}

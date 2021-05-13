@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
 import { getGear, deleteGear as deleteGearAPI } from '../Services/gear'
 
-function useGear () {
+function useGear ({ startDate, endDate, limit }) {
   const [gear, setGear] = useState()
 
   const loadGear = async () => {
     try {
-      const results = await getGear()
+      const results = await getGear({
+        startDate,
+        endDate,
+        limit
+      })
 
       setGear(results?.data ?? [])
     } catch (error) {

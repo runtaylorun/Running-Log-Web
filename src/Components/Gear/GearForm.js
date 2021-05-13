@@ -4,7 +4,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import { getCurrentDate, formatDateYYMMDD } from '../../Lib/time'
 import { useForm } from 'react-hook-form'
-import { createGear, getGearById, updateGear } from '../../Services/gear'
+import { postGear, getGearById, updateGear } from '../../Services/gear'
 import classes from './gear.module.css'
 
 const GearForm = () => {
@@ -12,7 +12,7 @@ const GearForm = () => {
   const [gearDateAdded, setGearDateAdded] = useState(formatDateYYMMDD(getCurrentDate()))
   const [formSubmitted, setFormSubmitted] = useState(false)
 
-  const errorStyle = {color: 'red'}
+  const errorStyle = { color: 'red' }
 
   const defaultValues = {
     id: gearId,
@@ -24,6 +24,7 @@ const GearForm = () => {
     dateAdded: gearDateAdded
   }
 
+  console.log(gearId)
   const { register, handleSubmit, errors, reset } = useForm({ defaultValues })
 
   const textValidation = {
@@ -70,19 +71,21 @@ const GearForm = () => {
 
   const onSubmit = async (data) => {
     const gearToCreate = {
-      id: gearId,
+      id: parseInt(gearId),
       brand: data?.brand ?? '',
       model: data?.model ?? '',
       colorway: data?.colorway ?? '',
       miles: data?.miles ?? 0,
       maxMiles: data?.maxMiles ?? 0,
-      dateAdded: data?.dateAdded
+      dateAdded: data?.dateAdded ?? formatDateYYMMDD(getCurrentDate())
     }
 
     try {
-      gearId === 0 ? await createGear(gearToCreate) : await updateGear(gearToCreate)
+      const result = gearToCreate.id === 0 ? await postGear(gearToCreate) : await updateGear(gearToCreate)
 
-      setFormSubmitted(true)
+      if (result) {
+        setFormSubmitted(true)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -96,31 +99,31 @@ const GearForm = () => {
         <div className={classes.formRow1}>
           <div className={classes.inputContainer}>
             <label>Brand</label>
-            <input ref={register(textValidation)} name='brand' type='text'/>
+            <input ref={register(textValidation)} name='brand' type='text' />
             <p style={errorStyle}>{errors?.brand?.message}</p>
           </div>
           <div className={classes.inputContainer}>
             <label>Model</label>
-            <input ref={register(textValidation)} name='model' type='text'/>
+            <input ref={register(textValidation)} name='model' type='text' />
             <p style={errorStyle}>{errors?.model?.message}</p>
           </div>
         </div>
         <div className={classes.formRow2}>
           <div className={classes.inputContainer}>
             <label>Colorway</label>
-            <input ref={register(textValidation)} name='colorway' type='text'/>
+            <input ref={register(textValidation)} name='colorway' type='text' />
             <p style={errorStyle}>{errors?.colorway?.message}</p>
           </div>
           <div className={classes.inputContainer}>
             <label>Miles</label>
-            <input ref={register(numberValidation)} name='miles' type='text'/>
+            <input ref={register(numberValidation)} name='miles' type='text' />
             <p style={errorStyle}>{errors?.miles?.message}</p>
           </div>
         </div>
         <div className={classes.formRow3}>
           <div className={classes.inputContainer}>
             <label>Max Miles</label>
-            <input ref={register(numberValidation)} name='maxMiles' type='text'/>
+            <input ref={register(numberValidation)} name='maxMiles' type='text' />
             <p style={errorStyle}>{errors?.maxMiles?.message}</p>
           </div>
         </div>
@@ -129,7 +132,7 @@ const GearForm = () => {
           <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='button' onClick={() => reset(defaultValues)}>Clear</Button>
         </div>
       </form>
-    </div>
+        </div>
   )
 }
 

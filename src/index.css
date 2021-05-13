@@ -10,5 +10,6 @@ body {
 #root {
 	font-size: 16px;
 	height: 100vh;
+	overflow: hidden;
 	background-color: #FDFEFF;
 }

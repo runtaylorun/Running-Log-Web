@@ -5,17 +5,17 @@ momentDurationFormatSetup(Moment)
 
 export const getStartOfCurrentWeekISO = (date) => {
   if (date) {
-    return Moment(date).clone().startOf('isoWeek')
+    return Moment(date).clone().startOf('week')
   } else {
-    return Moment().clone().startOf('isoWeek')
+    return Moment().clone().startOf('week')
   }
 }
 
 export const getEndOfCurrentWeekISO = (date) => {
   if (date) {
-    return Moment(date).clone().endOf('isoWeek')
+    return Moment(date).clone().endOf('week')
   } else {
-    return Moment().clone().endOf('isoWeek')
+    return Moment().clone().endOf('week')
   }
 }
 
@@ -25,6 +25,10 @@ export const toISO = (date) => {
 
 export const dateIsAfter = (comparedDate, baseDate) => {
   return Moment(comparedDate).isAfter(baseDate) || Moment(comparedDate).isSame(baseDate)
+}
+
+export const dateIsBetween = (startDate, endDate, date) => {
+  return dateIsAfter(date, startDate) && dateIsBefore(date, endDate)
 }
 
 export const dateIsBefore = (comparedDate, baseDate) => {
@@ -56,6 +60,14 @@ export const HMStoSeconds = (hours, minutes, seconds) => {
 
 export const secondsToHourMinuteSeconds = (seconds) => {
   return Moment.duration(seconds, 'seconds').format('h:mm:ss')
+}
+
+export const weeksFromCurrentDate = (numberOfWeeks, isStart = true) => {
+  if (isStart) {
+    return Moment(getStartOfCurrentWeekISO()).subtract(numberOfWeeks, 'w')
+  } else {
+    return Moment(getEndOfCurrentWeekISO()).subtract(numberOfWeeks, 'w')
+  }
 }
 
 export const getCurrentDate = () => {

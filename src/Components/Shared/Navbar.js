@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { getIsUserAuthenticated } from '../../Redux/Reducers/selectors'
@@ -13,6 +13,11 @@ const Navbar = (props) => {
   const location = useLocation()
   const history = useHistory()
   const nonAuthRoutes = ['/', '/login', '/register', '/forgot']
+  const [isOpen, setIsOpen] = useState(true)
+
+  const toggleHandler = () => {
+    setIsOpen(!isOpen)
+  }
 
   const signOut = async () => {
     try {
@@ -28,12 +33,17 @@ const Navbar = (props) => {
 
   return isAuthenticated && !nonAuthRoutes.includes(location.pathname)
     ? (
+      <>
+      <div onPointerOver={() => setIsOpen(true)} onClick={toggleHandler} className={`${classes.toggle} ${isOpen ? classes.toggleSlideIn : classes.toggleSlideOut}`}>
+        <Icon style={{ margin: '0 0 3px 0', padding: 0, color: 'white' }} name={isOpen ? 'arrow left' : 'arrow right'} />
+      </div>
     <Sidebar
+      animation='push'
       className={classes.sidebar}
       vertical
       icon='labeled'
       width='thin'
-      visible
+      visible={isOpen}
       as={Menu}
     >
       <h1 className={classes.navHeader}>Log2Win</h1>
@@ -47,7 +57,7 @@ const Navbar = (props) => {
         <NavLink activeClassName={classes.activeLink} className={classes.link} to='/Calendar'>
           <Icon name='calendar' size='big' />
           Calendar
-      </NavLink>
+        </NavLink>
       </Menu.Item>
       <Menu.Item>
         <NavLink activeClassName={classes.activeLink} className={classes.link} to='/History'>
@@ -74,6 +84,7 @@ const Navbar = (props) => {
         </NavLink>
       </Menu.Item>
     </Sidebar>
+      </>
       )
     : null
 }

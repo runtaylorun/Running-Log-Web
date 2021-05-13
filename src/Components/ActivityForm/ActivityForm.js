@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
-import { postActivity, getActivity, putActivity } from '../../Services/activities'
+import { Modal, Button } from 'semantic-ui-react'
+import { postActivity, getActivity, putActivity, postActivityFile } from '../../Services/activities'
 import { getGear } from '../../Services/gear'
 import { calculatePacePerMile, calculatePacePerKilometer } from '../../Lib/pace'
 import { getCurrentDate, formatDateMMDD, formatDateYYMMDD } from '../../Lib/time'
 import { useForm } from 'react-hook-form'
+
 import classes from './activityForm.module.css'
 
 const ActivityForm = () => {
   const { activityId = 0 } = useParams()
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
+  const [uploadInfo, setUploadInfo] = useState({})
+  const [uploadedFile, setUploadedFile] = useState(null)
+  const [fileKey, setFileKey] = useState(Date.now())
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [gear, setGear] = useState([])
   const [pacePerMile, setPacePerMile] = useState('')
@@ -17,6 +23,8 @@ const ActivityForm = () => {
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
   const [type, setType] = useState(1)
+
+  console.log(uploadedFile)
 
   const NO_WORKOUT = '5'
 
@@ -169,12 +177,40 @@ const ActivityForm = () => {
 
   const errorColor = { color: 'red' }
 
+  const closeUploadModalHandler = () => {
+    setIsUploadModalOpen(false)
+  }
+
+  const uploadFileHandler = async () => {
+    try {
+      const formData = new FormData()
+
+      formData.append('file', uploadedFile, uploadedFile.name)
+
+      const result = await postActivityFile(formData)
+
+      if (result) {
+        setUploadInfo({ message: result?.data?.message, isError: false })
+      }
+    } catch (error) {
+      console.log(error)
+      setUploadInfo({ message: error?.response?.data?.message, isError: true })
+    }
+  }
+
+  const clearUploadHandler = () => {
+    setUploadedFile(null)
+    setFileKey(Date.now())
+    setUploadInfo({})
+  }
+
   return (
     formSubmitted
       ? <Redirect to='/calendar' />
       : <div className={classes.pageContainer}>
         <div className={classes.pageHeader}>
           <h1>Activity Form</h1>
+          <p onClick={() => setIsUploadModalOpen(true)} style={{ color: 'blue', float: 'right', cursor: 'pointer' }}>Upload a file</p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
           <div className={classes.formRow1}>
@@ -270,7 +306,24 @@ const ActivityForm = () => {
             <button onClick={resetHandler} type='button' className={classes.button}>Reset</button>
           </div>
         </form>
-      </div>
+        <Modal onClose={closeUploadModalHandler} size='small' open={isUploadModalOpen}>
+            <Modal.Header style={{ textAlign: 'center' }}>
+              Upload a run
+            </Modal.Header>
+            <Modal.Content>
+              <input key={fileKey} onChange={(e) => setUploadedFile(e.target.files?.[0])} type='file' accept='.tcx,.gpx,.fit' />
+              <p style={{ color: uploadInfo?.isError ? 'red' : 'green' }}>{uploadInfo?.message}</p>
+            </Modal.Content>
+            <Modal.Actions style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div>
+              <Button disabled={!uploadedFile} onClick={uploadFileHandler}>Upload</Button>
+              <Button onClick={clearUploadHandler}>Clear</Button>
+              </div>
+              <Button onClick={closeUploadModalHandler}>Cancel</Button>
+            </Modal.Actions>
+        </Modal>
+        </div>
+
   )
 }
 

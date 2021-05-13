@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: hsl(190, 85%, 50%);
+	background-color: hsl(215, 85%, 60%);
 	height: 100vh;
 }
 
@@ -19,6 +19,17 @@
 	max-width: 600px;
 	min-height: 200px;
 	border-radius: 7px;
+}
+
+.link {
+	color: black;
+	transition: color 0.3s;
+	height: 5%;
+}
+
+.link:hover {
+	color: hsl(215, 85%, 60%);
+	text-decoration: underline;
 }
 
 .cardHeader {
@@ -84,10 +95,6 @@ form label {
 	font-size: 14px;
 }
 
-button:hover {
-	cursor: pointer;
-}
-
 .inputContainer {
 	display: flex;
 	flex-direction: column;
@@ -99,12 +106,22 @@ button:hover {
 	width: 50%;
 }
 
-.formSubmitContainer button {
-	background-color: hsl(190, 85%, 50%);
-	border: none;
+.button {
+	background-color: hsl(215, 85%, 60%);
+	border: 1px solid hsl(215, 85%, 60%);
 	color: #fdfeff;
 	padding: 5px 0 5px 0;
 	width: 100%;
 	border-radius: 5px;
 	font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: hsl(215, 90%, 40%);
+}
+
+.button:active {
+	border: 1px solid hsl(215, 100%, 20%);
 }

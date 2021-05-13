@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { getUserMeasurementSystem } from '../../Redux/Reducers/selectors'
 import { Pagination, Search } from 'semantic-ui-react'
 import { calculatePacePerMile } from '../../Lib/pace'
+import { distanceUnits, convertToUserMeasurementSystem, roundTo2 } from '../../Lib/conversions'
 import useDebounce from '../../Hooks/useDebounce'
 import SortableHeader from './sortableHeader'
 import classes from './history.module.css'
@@ -15,6 +18,7 @@ const History = () => {
   const [sortDirection, setSortDirection] = useState('DESC')
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500)
   const [activities, pages, count, isLoading, setIsLoading] = useActivities({ limit: LIMIT, offset, searchTerm: debouncedSearchTerm, column, sortDirection })
+  const measurementSystem = useSelector(getUserMeasurementSystem)
 
   const pageChangeHandler = (e, data) => {
     setOffset((data.activePage - 1) * LIMIT)
@@ -52,7 +56,7 @@ const History = () => {
             <td>{activity.date}</td>
             <td>{activity.type}</td>
             <td>{activity.title}</td>
-            <td style={{ textAlign: 'center' }}>{`${activity.distance} Mi`}</td>
+            <td style={{ textAlign: 'center' }}>{`${roundTo2(convertToUserMeasurementSystem(activity.distanceUnit, activity.distance, measurementSystem))} ${distanceUnits[measurementSystem]}`}</td>
             <td style={{ textAlign: 'right' }}>{calculatePacePerMile(activity?.hours, activity?.minutes, activity?.seconds, activity.distance, 'Mi')}</td>
             <td><a href={`/activityView/${activity.id}`}>View</a></td>
           </tr>

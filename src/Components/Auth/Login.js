@@ -74,20 +74,20 @@ const Login = () => {
               <label>Email</label>
               <input ref={register(emailRules)} type='text' name='email' />
               {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
-            </div>
+              </div>
             <div className={classes.inputContainer}>
               <label>Password</label>
               <input ref={register(passwordRules)} type='password' name='password' />
               {errors.password && <p style={{ color: 'red' }}>{errors.password.message}</p>}
             </div>
             <div className={classes.formSubmitContainer}>
-              <button type='submit'>Sign In</button>
+              <button className={classes.button} type='submit'>Sign In</button>
             </div>
           </form>
         </div>
         <div className={classes.cardFooter}>
-          <Link style={{ color: 'black' }} to='/register'>Not Registered?</Link>
-          <Link style={{ color: 'black', marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
+          <Link className={classes.link} to='/register'>Not Registered?</Link>
+          <Link className={classes.link} style={{ marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getActivities } from '../Services/activities'
 
-function useActivities ({startDate, endDate, month, year, limit, offset, searchTerm, column, sortDirection}) {
+function useActivities ({ startDate, endDate, month, year, limit, offset, searchTerm, column, sortDirection }) {
   const [activities, setActivities] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [pages, setPages] = useState(0)
@@ -10,7 +10,7 @@ function useActivities ({startDate, endDate, month, year, limit, offset, searchT
   const loadActivities = async () => {
     try {
       const results = await getActivities({
-        startDate, 
+        startDate,
         endDate,
         month,
         year,

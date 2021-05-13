@@ -4,7 +4,7 @@ import { Button, Modal } from 'semantic-ui-react'
 import { useSelector } from 'react-redux'
 import { getUserMeasurementSystem } from '../../Redux/Reducers/selectors'
 import { getMileageTotal } from '../../Lib/mileage'
-import { distanceUnits } from '../../Lib/conversions'
+import { distanceUnits, roundTo2 } from '../../Lib/conversions'
 import RunContainer from './RunContainer'
 import classes from './calendar.module.css'
 
@@ -13,6 +13,7 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
   const [runsModalOpen, setRunsModalOpen] = useState(false)
   const measurementSystem = useSelector(getUserMeasurementSystem)
 
+  console.log(activities)
   const mileageTotal = getMileageTotal(activities, measurementSystem)
   return (
 		<div
@@ -50,10 +51,10 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
 								activityId={activity.id}
 								key={activity.id}
 								title={activity.title}
-								distance={activity.distance}
+								distance={roundTo2(activity.distance)}
 								type={activity.type}
 								unit={activity.distanceUnit}
-							/>
+						         />
 						})
 
 						}

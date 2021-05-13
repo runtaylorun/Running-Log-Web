@@ -4,6 +4,7 @@ import GearCard from '../Gear/GearCard'
 import DataSlot from './DataSlot'
 import { calculatePacePerMile } from '../../Lib/pace'
 import { HMStoSeconds, secondsToHourMinuteSeconds } from '../../Lib/time'
+import { roundTo2 } from '../../Lib/conversions'
 import { useParams } from 'react-router-dom'
 import classes from './activity.module.css'
 import useActivity from '../../Hooks/useActivity'
@@ -29,7 +30,7 @@ const ActivityView = () => {
       </div>
       <div className={classes.mainArea}>
         <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '75%' }}>
-          <DataSlot label='Distance' data={`${activity.distance} ${activity.distanceUnit}`} />
+          <DataSlot label='Distance' data={`${roundTo2(activity.distance)} ${activity.distanceUnit}`} />
           <DataSlot label='Time' data={secondsToHourMinuteSeconds(HMStoSeconds(activity?.hours, activity?.minutes, activity?.seconds)) } />
           <DataSlot label='Pace per Mi' data={calculatePacePerMile(activity?.hours, activity?.minutes, activity?.seconds, activity.distance, 'Mi')} />
         </div>

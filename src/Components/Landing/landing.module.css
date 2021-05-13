@@ -1,6 +1,6 @@
 .page {
     height: 100%;
-    background-color: hsl(190, 85%, 50%);
+    background-color: hsl(215, 85%, 60%);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -70,5 +70,38 @@
 }
 
 .button:hover a {
-    color: hsl(190, 85%, 50%)
+    color: hsl(215, 85%, 60%)
 }
+
+.button:focus {
+    border-color: hsl(215, 90%, 40%);
+
+}
+
+@media (max-width: 576px) {
+
+    .phrase {
+        font-size: 48px;
+        text-align: center;
+        font-weight: 400;
+    }
+    
+    .shortStatement {
+        width: 400px;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .link {
+        font-size: 20px;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+        align-items: space-evenly;
+        width: 25%;
+        height: 40%;
+
+    }
+ }

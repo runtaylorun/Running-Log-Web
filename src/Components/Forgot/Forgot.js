@@ -46,13 +46,13 @@ const Forgot = () => {
                   {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
                 </div>
                 <div className={classes.formSubmitContainer}>
-                  <button>Submit Request</button>
+                  <button className={classes.button}>Submit Request</button>
                 </div>
               </form>
             </div>
             <div className={classes.cardFooter}>
-              <Link style={{ color: 'black' }} to='/login'>Sign In</Link>
-              <Link style={{ color: 'black', marginLeft: 10 }} to='/register'>Create Account</Link>
+              <Link className={classes.link} to='/login'>Sign In</Link>
+              <Link className={classes.link} style={{ marginLeft: 10 }} to='/register'>Register</Link>
             </div>
           </div>
         </div>
