@@ -6,7 +6,7 @@ import classes from './dashboard.module.css'
 const GearSummary = ({ gear }) => {
   return (
         <div className={classes.gearContainer}>
-            <h2 style={{ fontWeight: 400 }}>Most Recent Gear</h2>
+            <h2>Most Recent Gear</h2>
             <table className={classes.gearTable}>
                 <thead>
                     <tr>

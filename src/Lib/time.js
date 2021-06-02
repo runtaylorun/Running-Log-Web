@@ -5,17 +5,17 @@ momentDurationFormatSetup(Moment)
 
 export const getStartOfCurrentWeekISO = (date) => {
   if (date) {
-    return Moment(date).clone().startOf('week')
+    return Moment(date).clone().startOf('iweek')
   } else {
-    return Moment().clone().startOf('week')
+    return Moment().clone().startOf('iweek')
   }
 }
 
 export const getEndOfCurrentWeekISO = (date) => {
   if (date) {
-    return Moment(date).clone().endOf('week')
+    return Moment(date).clone().endOf('iweek')
   } else {
-    return Moment().clone().endOf('week')
+    return Moment().clone().endOf('iweek')
   }
 }
 

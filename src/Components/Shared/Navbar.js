@@ -13,7 +13,7 @@ const Navbar = (props) => {
   const location = useLocation()
   const history = useHistory()
   const nonAuthRoutes = ['/', '/login', '/register', '/forgot']
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleHandler = () => {
     setIsOpen(!isOpen)

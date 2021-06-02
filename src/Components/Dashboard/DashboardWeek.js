@@ -31,16 +31,11 @@ const DashboardWeek = ({ activities }) => {
 
   return (
     <div className={classes.weekContainer}>
-      <div className={classes.weekHeader}>
-        {getDatesForCurrentWeek().map(date => {
-          return <h3 key={date}>{date}</h3>
-        })}
-      </div>
       <div className={classes.weekBody}>
         {generateWeek()}
       </div>
       <div className={classes.weekFooter}>
-        <h2>{`Weekly Total: ${mileageTotal} ${distanceUnits[measurementSystem]}`}</h2>
+        <h2>{`${mileageTotal} ${distanceUnits[measurementSystem]} this week`}</h2>
       </div>
     </div>
   )

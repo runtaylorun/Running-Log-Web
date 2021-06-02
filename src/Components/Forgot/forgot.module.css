@@ -83,11 +83,15 @@ form {
 	height: 100%;
 }
 
-form input {
-	border: 1px solid transparent;
-	outline: none;
-	padding: 5px;
-	border-radius: 5px;
+.textBox {
+    line-height: 40px;
+    background: #fafafa;
+    box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    border: 1px solid #d4d4d4;
+    color: #666;
 }
 
 form label {

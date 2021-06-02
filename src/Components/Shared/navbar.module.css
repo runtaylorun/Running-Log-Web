@@ -7,11 +7,11 @@
 }
 
 .link:hover {
-    color: hsl(215, 100%, 50%); 
+    color: hsl(215, 85%, 60%); 
 }
 
 .activeLink {
-    color: hsl(215, 100%, 50%); 
+    color: hsl(215, 85%, 60%); 
     transition: color 0.3s
 }
 
@@ -31,7 +31,7 @@
 }
 
 .navHeader {
-    color: hsl(215, 100%, 50%);
+    color: hsl(215, 85%, 60%);
 }
 
 .sidebar {

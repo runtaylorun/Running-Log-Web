@@ -79,27 +79,27 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={classes.inputContainer}>
               <label>Email</label>
-              <input ref={register(emailRules)} type='text' name='email' />
+              <input className={classes.textBox} ref={register(emailRules)} type='text' name='email' />
               {<p style={{ color: 'red' }}>{errors?.email?.message}</p>}
             </div>
             <div className={classes.inputContainer}>
               <label>First Name</label>
-              <input ref={register(nameRules)} type='text' name='firstName' />
+              <input className={classes.textBox} ref={register(nameRules)} type='text' name='firstName' />
               {<p style={{ color: 'red' }}>{errors?.firstName?.message}</p>}
             </div>
             <div className={classes.inputContainer}>
               <label>Last Name</label>
-              <input ref={register(nameRules)} type='text' name='lastName' />
+              <input className={classes.textBox} ref={register(nameRules)} type='text' name='lastName' />
               {<p style={{ color: 'red' }}>{errors?.lastName?.message}</p>}
             </div>
             <div className={classes.inputContainer}>
               <label>Password</label>
-              <input ref={register(passwordRules)} type='password' name='password' />
+              <input className={classes.textBox} ref={register(passwordRules)} type='password' name='password' />
               {<p style={{ color: 'red' }}>{errors?.password?.message}</p>}
             </div>
             <div className={classes.inputContainer}>
               <label>Confirm Password</label>
-              <input ref={register(passwordConfirmationRules)} type='password' name='passwordConfirmation' />
+              <input className={classes.textBox} ref={register(passwordConfirmationRules)} type='password' name='passwordConfirmation' />
               {<p style={{ color: 'red' }}>{errors?.passwordConfirmation?.message}</p>}
             </div>
             <div className={classes.formSubmitContainer}>

@@ -42,7 +42,7 @@ const Forgot = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes.inputContainer}>
                   <label>Email</label>
-                  <input ref={register(emailRules)} type='text' name='email' />
+                  <input className={classes.textBox} ref={register(emailRules)} type='text' name='email' />
                   {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
                 </div>
                 <div className={classes.formSubmitContainer}>

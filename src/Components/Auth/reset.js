@@ -66,12 +66,12 @@ const Reset = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes.inputContainer}>
                   <label>New Password</label>
-                  <input ref={register(passwordRules)} type='password' name='password' />
+                  <input className={classes.textBox} ref={register(passwordRules)} type='password' name='password' />
                   {errors.password && <p style={{ color: 'red' }}>{errors.password.message}</p>}
                 </div>
                 <div className={classes.inputContainer}>
                   <label>Confirm New Password</label>
-                  <input ref={register(passwordConfirmationRules)} type='password' name='passwordConfirmation' />
+                  <input className={classes.textBox} ref={register(passwordConfirmationRules)} type='password' name='passwordConfirmation' />
                   {errors.passwordConfirmation && <p style={{ color: 'red' }}>{errors.passwordConfirmation.message}</p>}
                 </div>
                 <div className={classes.formSubmitContainer}>

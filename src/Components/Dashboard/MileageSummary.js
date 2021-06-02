@@ -13,7 +13,7 @@ const MileageSummary = ({ activities }) => {
     const activitiesByWeek = []
 
     for (let i = 0; i < weeks; i++) {
-      activitiesByWeek.push(activities.filter(activity => dateIsBetween(weeksFromCurrentDate(i), weeksFromCurrentDate(i, false), activity.date)))
+      activitiesByWeek.push(activities?.filter(activity => dateIsBetween(weeksFromCurrentDate(i), weeksFromCurrentDate(i, false), activity.date)))
     }
 
     return activitiesByWeek
@@ -44,7 +44,7 @@ const MileageSummary = ({ activities }) => {
 
   return (
         <div className={classes.mileageContainer}>
-            <h2 style={{ fontWeight: 400, margin: '0 0 10px 0' }}>Mileage Past 5 Weeks</h2>
+            <h2>Mileage Past 5 Weeks</h2>
             <Line data={data} />
         </div>
   )

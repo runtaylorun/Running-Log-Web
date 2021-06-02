@@ -10,28 +10,32 @@
 
 .weekContainer {
     margin-top: 20px;
-    display: 'flex';
-    flex-direction: 'column';
+    display: flex;
+    flex-direction: column;
     grid-column: 1 / 4;
     grid-row: 1 / 3;
     place-self: start center;
     width: 85%;
-    height: 85%;
     border-radius: 5px;
     background-color: white;
     padding: 10px;
 
 }
 
-.weekHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 10%;
-}
-
 .dayContainer {
     margin: 10px 0 10px 0;
+}
+
+.dayDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dayDate h3 {
+    font-weight: 400;
+    margin: 0;
 }
 
 .weekHeader h3 {
@@ -43,21 +47,16 @@
 
 .weekBody {
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-    height: 80%;
 }
 
 .weekFooter {
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 10%;
 }
 
 .weekFooter h2 {
-    font-weight: 400
-    ;
+    font-weight: 400;
 }
 
 .day {
@@ -67,7 +66,6 @@
     justify-content: space-between;
     width: 13%;
     border: 1px solid #d4d4d4;
-    height: 85%;
     margin: 20px 0 20px 0;
 }
 
@@ -81,8 +79,8 @@
 .gearContainer {
     border-radius: 5px;
     background-color: white;
-    width: 420px;
-    height: 300px;
+    max-width: 420px;
+    max-height: 300px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -91,16 +89,28 @@
     grid-row: 3 / 5
 }
 
+.gearContainer h2 {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.gearTable th {
+    font-size: 18px;
+}
+
 .gearTable td {
     padding: 10px;
+    font-size: 18px;
 }
+
+
 
 .mileageContainer {
     border-radius: 5px;
     background-color: white;
     padding: 10px;
-    width: 420px;
-    height: 300px;
+    max-width: 420px;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,20 +119,107 @@
     grid-row: 3 / 5
 }
 
+.mileageContainer h2 {
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0 0 10px 0;
+}
+
 .mileageTable td {
     padding: 10px;
+}
+
+.offDayHeader {
+    height: 20%;
+}
+
+.offDayHeader h1 {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.offDayBody {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.offDayBody p {
+    font-size: 18px;
+}
+
+.offDayBody p span {
+    font-weight: 700;
 }
 
 .offDayContainer {
     border-radius: 5px;
     background-color: white;
     padding: 10px;
-    width: 420px;
-    height: 300px;
+    max-width: 420px;
+    max-height: 300px;
     display: flex;
+    padding: 50px;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     grid-column: 3 / 4;
     grid-row: 3 / 5;
+}
+
+@media (max-width: 576px) {
+    .dashboardPage {
+        height: 2750px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        overflow-y: auto;
+    }
+
+    .weekContainer {
+        justify-content: space-between;   
+        place-self: inherit;  
+        max-height: 1750px;   
+    }
+
+    .weekBody {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .weekFooter {
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    .day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+        height: 10%;
+        min-height: 200px;
+        margin: 20px 0 20px 0;
+    }
+
+    .gearContainer {
+        height: auto;
+    }
+
+    .mileageContainer {
+        height: auto;
+    }
+
+    .offDayContainer {
+        height: auto;
+    }
+
+    .offDayBody {
+        margin-top: 20px;
+    }
+
 }

@@ -72,12 +72,12 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
               <div className={classes.inputContainer}>
               <label>Email</label>
-              <input ref={register(emailRules)} type='text' name='email' />
+              <input className={classes.textBox} ref={register(emailRules)} type='text' name='email' />
               {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
               </div>
             <div className={classes.inputContainer}>
               <label>Password</label>
-              <input ref={register(passwordRules)} type='password' name='password' />
+              <input className={classes.textBox} ref={register(passwordRules)} type='password' name='password' />
               {errors.password && <p style={{ color: 'red' }}>{errors.password.message}</p>}
             </div>
             <div className={classes.formSubmitContainer}>
