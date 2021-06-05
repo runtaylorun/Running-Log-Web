@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
 import { getUserDetails, updateUserDetail } from '../../Services/user'
-import { getUserMeasurementSystem} from '../../Redux/Reducers/selectors.jsx'
+import { getUserMeasurementSystem } from '../../Redux/Reducers/selectors.jsx'
 import { setMeasurementSystem as setMeasurementSystemRedux } from '../../Redux/Actions/user'
+import { useWindowDimensions } from '../../Hooks/useWindowDimensions'
 import classes from './settings.module.css'
 
 const Settings = () => {
   const [userDetails, setUserDetails] = useState({})
   const [measurementSystem, setMeasurementSystem] = useState(useSelector(getUserMeasurementSystem))
+  const { width, height } = useWindowDimensions()
 
   const dispatch = useDispatch()
 
@@ -52,9 +54,9 @@ const Settings = () => {
     <div className={classes.page}>
       <div className={classes.formContainer}>
         <div className={classes.profilePicContainer}>
-          <Icon size='massive' name='user circle icon' />
+          <Icon size={width < 418 ? 'huge' : 'massive'} name='user circle icon' />
           <div className={classes.profilePicLabels}>
-            <button className={classes.button}>Upload Profile Picture</button>
+            <button className={classes.button}>Upload Picture</button>
             <p>Must be jpg no larger than 1MB</p>
           </div>
         </div>

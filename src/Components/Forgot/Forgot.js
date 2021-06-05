@@ -46,7 +46,7 @@ const Forgot = () => {
                   {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
                 </div>
                 <div className={classes.formSubmitContainer}>
-                  <button className={classes.button}>Submit Request</button>
+                  <button className={classes.button}>Submit</button>
                 </div>
               </form>
             </div>

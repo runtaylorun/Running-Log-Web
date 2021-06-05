@@ -10,7 +10,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 75%;
 }
 
 .profilePicContainer {
@@ -19,7 +18,7 @@
 }
 
 .profilePicContainer p {
-    font-size: 11px;
+    font-size: 12px;
     text-align: left;
     color: grey;
 }
@@ -33,7 +32,7 @@
 
 .button {
     float: left;
-    font-size: 15px;
+    font-size: 16px;
 	min-width: 150px;
 	max-width: 250px;
     display: block;
@@ -64,18 +63,18 @@
 }
 
 .select {
-    line-height: 50px;
+    line-height: 30px;
     color: #666;
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
     border-radius: 5px;
     border: 1px solid #d4d4d4;
     background: #fafafa;
     font-size: 16px;
-    padding: 10px 25px 10px 25px;
+    padding: 5px 20px 5px 20px;
 }
 
 .textbox {
-    line-height: 40px;
+    line-height: 30px;
     background: #fafafa;
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
     border-radius: 5px;
@@ -100,6 +99,10 @@
     align-items: center;
 }
 
+.formButtons {
+    display: flex;
+}
+
 .profilePictureContainer button {
     padding: 5px 15px 5px 15px;
     background-color: white;
@@ -121,5 +124,32 @@ select:focus {
 
 select:focus-visible {
     border-color: hsl(215, 85%, 60%);
+}
+
+@media (max-width: 418px) {
+
+    .profilePicContainer p {
+        font-size: 10px;
+    }
+
+    .button {
+        font-size: 14px;
+        min-width: 125px;
+        max-width: 200px;
+        padding: 8px;
+    }
+
+    .textbox {
+        font-size: 14px;
+    }
+
+    .select {
+        font-size: 14px;
+    }
+
+    .inputContainer label {
+        font-size: 14px;
+    }
+    
 }
 

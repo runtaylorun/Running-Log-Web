@@ -62,8 +62,8 @@ const History = () => {
           </tr>
         ))}
       </table>
-      <Pagination style={{ marginTop: 25 }} onPageChange={pageChangeHandler} totalPages={pages} activePage={activePage} />
-      <p style={{ marginTop: 10 }}>{`Viewing ${activities?.length + offset} of ${count} Records`}</p>
+      <Pagination className={classes} style={{ marginTop: 25 }} onPageChange={pageChangeHandler} totalPages={pages} activePage={activePage} />
+      <p className={classes.paginationLabel} style={{ marginTop: 10 }}>{`Viewing ${activities?.length + offset} of ${count} Records`}</p>
     </div >
   )
 }

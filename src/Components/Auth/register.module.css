@@ -113,7 +113,7 @@ form label {
 }
 
 .textBox {
-    line-height: 40px;
+    line-height: 30px;
     background: #fafafa;
     box-shadow: inset 0px 1px 3px 0px rgb(0 0 0 / 8%);
     border-radius: 5px;

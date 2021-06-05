@@ -39,4 +39,18 @@
     background-color: #F6F6F6;
 }
 
+.paginationLabel {
+    margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+    .historyTable {
+        font-size: 12px;
+    }
+
+    .paginationLabel {
+        font-size: 12px;
+    }
+ }
+
 

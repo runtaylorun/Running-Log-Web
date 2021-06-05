@@ -78,7 +78,7 @@
 
 }
 
-@media (max-width: 576px) {
+@media (max-width: 550px) {
 
     .phrase {
         font-size: 48px;
@@ -102,6 +102,32 @@
         align-items: space-evenly;
         width: 25%;
         height: 40%;
-
     }
  }
+
+ @media (max-width: 380px) {
+    .phrase {
+        font-size: 36px;
+    }
+    
+    .shortStatement {
+        width: 275px;
+        font-size: 12px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+
+    .buttonContainer {
+        width: 20%;
+    }
+
+    .button {
+        padding: 3px 10px 3px 10px;
+    }
+
+    .appName {
+        font-size: 20px;
+    }
+}
