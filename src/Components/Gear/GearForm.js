@@ -128,8 +128,8 @@ const GearForm = () => {
           </div>
         </div>
         <div style={{ marginTop: 20 }} className={classes.formButtons}>
-          <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='submit'>Submit</Button>
-          <Button style={{ color: 'white', backgroundColor: '#1F6FDD' }} as='button' type='button' onClick={() => reset(defaultValues)}>Clear</Button>
+          <Button as='button' type='submit'>Submit</Button>
+          <Button as='button' type='button' onClick={() => reset(defaultValues)}>Clear</Button>
         </div>
       </form>
         </div>

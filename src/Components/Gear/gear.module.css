@@ -42,7 +42,7 @@
 }
 
 .inputContainer input {
-    line-height: 40px;
+    line-height: 30px;
     min-width: 150px;
     border: 1px solid #d4d4d4;
     background: #fafafa;
@@ -73,6 +73,11 @@
     justify-content: space-evenly;
 }
 
+.formButtons button {
+    color: white !important;
+    background-color: hsl(215, 85%, 60%) !important ;
+}
+
 .card {
     background-color: #fafafa;
     max-width: 512px;
@@ -85,6 +90,12 @@
     grid-template-rows: 1fr 1fr;
     border-radius: 5px;
     position: relative;
+}
+
+.options {
+    position: relative !important;
+    left: 355px !important;
+    bottom: 212px !important;
 }
 
 .blankCard {
@@ -137,5 +148,22 @@
 
     .cardDetailsContainer p {
         font-size: 12px;
+    }
+
+    .progress {
+        font-size: 12px !important;
+    }
+
+    .options {
+        left: 253px !important;
+        top: -167px !important;
+    }
+
+    .formRow1 {
+        flex-direction: column;
+    }
+
+    .formRow2 {
+        flex-direction: column;
     }
  }

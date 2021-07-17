@@ -13,6 +13,16 @@
     justify-self: center;
 }
 
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 70%;
+}
+
 .headerGroup1 {
     display: flex;
 }
@@ -26,6 +36,18 @@
     grid-column: 1 / 1;
 }
 
+.dataSlotHeader {
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+.dataSlotText {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0;
+}
+
 .mainArea {
     grid-row: 1 / 4;
     grid-column: 2 / 4;
@@ -33,4 +55,39 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+
+@media (max-width: 748px) {
+    .activityViewPage {
+    height: 1000px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+    .headerGroup1 {
+        justify-content: center;
+    }
+
+    .headerGroup2 {
+        justify-content: center;
+    }
+
+    .dataSlotHeader {
+
+    }
+
+    .dataSlotText {
+
+    }
+
+    .gearArea {
+        display: flex;
+        justify-content: center;
+    }
+
+    .map {
+        margin-top: 10px;
+        height: 400px;
+    }
 }

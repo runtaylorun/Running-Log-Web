@@ -133,10 +133,10 @@ select:focus-visible {
     }
 
     .button {
-        font-size: 14px;
-        min-width: 125px;
+        font-size: 12px;
+        min-width: 100px;
         max-width: 200px;
-        padding: 8px;
+        padding: 6px;
     }
 
     .textbox {

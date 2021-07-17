@@ -1,8 +1,6 @@
 .historyPageContainer {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
 }
 
@@ -10,8 +8,10 @@
     margin-top: 10px;
     border-collapse: collapse;
     background-color: hsl(255, 0%, 95%);
-    width: 50%;
     white-space: nowrap;
+    min-width: 400px;
+    max-width: 600px;
+    width: 75%;
     overflow: hidden;
     text-align: left;
     border-radius: 5px;
@@ -43,9 +43,10 @@
     margin-top: 10px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 510px) {
     .historyTable {
         font-size: 12px;
+        min-width: 250px;
     }
 
     .paginationLabel {

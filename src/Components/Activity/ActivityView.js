@@ -17,6 +17,17 @@ const ActivityView = () => {
   return (
     <div className={classes.activityViewPage}>
       <ViewHeader date='10-04-2020' title='Medium Long Run' />
+      <div className={classes.mainArea}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '75%' }}>
+          <DataSlot label='Distance' data={`${roundTo2(activity.distance)} ${activity.distanceUnit}`} />
+          <DataSlot label='Time' data={secondsToHourMinuteSeconds(HMStoSeconds(activity?.hours, activity?.minutes, activity?.seconds)) } />
+          <DataSlot label='Pace per Mi' data={calculatePacePerMile(activity?.hours, activity?.minutes, activity?.seconds, activity.distance, 'Mi')} />
+        </div>
+        <div className={classes.map}>
+          <h2>Map Unavailable</h2>
+        </div>
+
+      </div>
       <div className={classes.gearArea}>
         <GearCard gear={
           {
@@ -27,16 +38,6 @@ const ActivityView = () => {
           }
         }
         />
-      </div>
-      <div className={classes.mainArea}>
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '75%' }}>
-          <DataSlot label='Distance' data={`${roundTo2(activity.distance)} ${activity.distanceUnit}`} />
-          <DataSlot label='Time' data={secondsToHourMinuteSeconds(HMStoSeconds(activity?.hours, activity?.minutes, activity?.seconds)) } />
-          <DataSlot label='Pace per Mi' data={calculatePacePerMile(activity?.hours, activity?.minutes, activity?.seconds, activity.distance, 'Mi')} />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '75%', border: '1px solid black', borderRadius: 5, height: '70%' }}>
-          <h2>Map Unavailable</h2>
-        </div>
       </div>
     </div>
   )
