@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import classes from './gear.module.css'
 
 const BlankCard = () => {
-  return (
-    <div className={classes.blankCard}>
-        <Link to="/gear/gearForm/0" ><Button size='large' icon='plus' /></Link>
-    </div>
-  )
+	return (
+		<div className={classes.blankCard}>
+			<Link to="/gear/gearForm/0" ><Button size='large' icon='plus' /></Link>
+		</div>
+	)
 }
 
 export default BlankCard

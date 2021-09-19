@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getIsUserAuthenticated } from './Redux/Reducers/selectors'
@@ -22,103 +23,104 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 function App () {
-  const isUserAuthenticated = useSelector(getIsUserAuthenticated)
-  const [checkingAuthentication, setCheckingAuthentication] = useState(true)
-  const dispatch = useDispatch()
+	const isUserAuthenticated = useSelector(getIsUserAuthenticated)
+	const [checkingAuthentication, setCheckingAuthentication] = useState(true)
+	const dispatch = useDispatch()
 
-  useEffect(() => {
-    const checkIfAuthenticated = async () => {
-      try {
-        const result = await checkAuthentication()
+	useEffect(() => {
+		const checkIfAuthenticated = async () => {
+			try {
+				const result = await checkAuthentication()
 
-        dispatch(setAuthentication(result?.data))
-        setCheckingAuthentication(false)
-      } catch (error) {
-        console.log('Error authenticating', error)
-      }
-    }
+				dispatch(setAuthentication(result?.data))
+				setCheckingAuthentication(false)
+			} catch (error) {
+				console.log('Error authenticating', error)
+			}
+		}
 
-    checkIfAuthenticated()
-  }, [])
+		checkIfAuthenticated()
+	}, [])
 
-  const getUserDetails = async () => {
-    try {
-      const result = await getUserDetailsAPI()
+	const getUserDetails = async () => {
+		try {
+			const result = await getUserDetailsAPI()
 
-      if (result) {
-        dispatch(setMeasurementSystem(result?.data?.measurementSystem))
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+			if (result) {
+				dispatch(setMeasurementSystem(result?.data?.measurementSystem))
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
-  useEffect(() => {
-    if (isUserAuthenticated) {
-      getUserDetails()
-    }
-  }, [isUserAuthenticated])
+	useEffect(() => {
+		if (isUserAuthenticated) {
+			getUserDetails()
+		}
+	}, [isUserAuthenticated])
 
-  const PrivateRoute = ({ children, ...rest }) => {
-    return (
-      checkingAuthentication ? <PageLoader label='Authenticating' />
-        : <Route
-        {...rest}
-        render={({ location }) =>
-          isUserAuthenticated
-            ? (
-                children
-              )
-            : (
-            <Redirect
-              to={{
-                pathname: '/login',
-                state: { from: location }
-              }}
-            />
-              )
-        }
-      />
-    )
-  }
+	const PrivateRoute = ({ children, ...rest }) => {
+		return (
+			checkingAuthentication
+				? <PageLoader label='Authenticating' />
+				: <Route
+					{...rest}
+					render={({ location }) =>
+						isUserAuthenticated
+							? (
+								children
+							)
+							: (
+								<Redirect
+									to={{
+										pathname: '/login',
+										state: { from: location }
+									}}
+								/>
+							)
+					}
+				  />
+		)
+	}
 
-  return (
-    <>
-      <Navbar />
-      <Switch>
-      <PrivateRoute path='/gear/gearForm/:gearId'>
-          <GearForm />
-      </PrivateRoute>
-      <PrivateRoute path='/gear'>
-          <Gear />
-      </PrivateRoute>
-        <PrivateRoute path='/dashboard'>
-          <Dashboard />
-        </PrivateRoute>
-        <PrivateRoute path='/calendar' >
-          <CalendarPage />
-        </PrivateRoute>
-        <PrivateRoute path='/history'>
-          <History />
-        </PrivateRoute>
-        <PrivateRoute path='/settings'>
-          <Settings />
-        </PrivateRoute>
-        <PrivateRoute path='/activityView/:activityId'>
-          <ActivityView />
-        </PrivateRoute>
-        <PrivateRoute path='/activityForm/:activityId'>
-          <ActivityForm />
-        </PrivateRoute>
+	return (
+		<>
+			<Navbar />
+			<Switch>
+				<PrivateRoute path='/gear/gearForm/:gearId'>
+					<GearForm />
+				</PrivateRoute>
+				<PrivateRoute path='/gear'>
+					<Gear />
+				</PrivateRoute>
+				<PrivateRoute path='/dashboard'>
+					<Dashboard />
+				</PrivateRoute>
+				<PrivateRoute path='/calendar' >
+					<CalendarPage />
+				</PrivateRoute>
+				<PrivateRoute path='/history'>
+					<History />
+				</PrivateRoute>
+				<PrivateRoute path='/settings'>
+					<Settings />
+				</PrivateRoute>
+				<PrivateRoute path='/activityView/:activityId'>
+					<ActivityView />
+				</PrivateRoute>
+				<PrivateRoute path='/activityForm/:activityId'>
+					<ActivityForm />
+				</PrivateRoute>
 
-        <Route component={Landing} exact path='/' />
-        <Route component={Login} path='/login' />
-        <Route component={Register} path='/register' />
-        <Route component={Forgot} path='/forgot' />
-        <Route component={Reset} path='/forgot/:token' />
-      </Switch>
-    </>
-  )
+				<Route component={Landing} exact path='/' />
+				<Route component={Login} path='/login' />
+				<Route component={Register} path='/register' />
+				<Route component={Forgot} path='/forgot' />
+				<Route component={Reset} path='/forgot/:token' />
+			</Switch>
+		</>
+	)
 }
 
 export default App

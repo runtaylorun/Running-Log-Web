@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal } from 'semantic-ui-react'
@@ -9,22 +10,16 @@ import RunContainer from './RunContainer'
 import classes from './calendar.module.css'
 
 const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdown = false, activities }) => {
-  const [showAddButton, setShowAddButton] = useState(false)
-  const [runsModalOpen, setRunsModalOpen] = useState(false)
-  const measurementSystem = useSelector(getUserMeasurementSystem)
+	const [showAddButton, setShowAddButton] = useState(false)
+	const [runsModalOpen, setRunsModalOpen] = useState(false)
+	const measurementSystem = useSelector(getUserMeasurementSystem)
 
-  console.log(activities)
-  const mileageTotal = getMileageTotal(activities, measurementSystem)
-  return (
-		<div
-			onMouseOut={() => setShowAddButton(false)}
-			onMouseOver={() => setShowAddButton(true)}
-			className={classes.dayContainer}
-		>
+	const mileageTotal = getMileageTotal(activities, measurementSystem)
+	return (
+		<div onMouseOut={() => setShowAddButton(false)} onMouseOver={() => setShowAddButton(true)} className={classes.dayContainer}>
 			<div style={{ width: '100%' }}>
 				<h4 style={{ color: nextMonth ? '#a1a1a1' : 'black', textAlign: 'left' }}>{day}</h4>
 			</div>
-
 			<div>
 				<h2 style={{ color: nextMonth ? '#a1a1a1' : 'black', textAlign: 'left' }}>{`${mileageTotal} ${distanceUnits[measurementSystem]}`}</h2>
 			</div>
@@ -59,15 +54,15 @@ const DayContainer = ({ day = '', month, year, nextMonth = false, weeklyBreakdow
 
 						}
 						{activities && activities.length > 0 &&
-           <div style={{ marginTop: 40, display: 'flex', justifyContent: 'center', width: '100%' }}>
-           	<h1>{`Daily Total: ${mileageTotal} ${distanceUnits[measurementSystem]}`}</h1>
-           </div>}
+						<div style={{ marginTop: 40, display: 'flex', justifyContent: 'center', width: '100%' }}>
+							<h1>{`Daily Total: ${mileageTotal} ${distanceUnits[measurementSystem]}`}</h1>
+						</div>}
 					</Modal.Content>
 				</Modal>
 			</div>
 
 		</div>
-  )
+	)
 }
 
 export default DayContainer
