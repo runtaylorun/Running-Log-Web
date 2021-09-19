@@ -7,21 +7,33 @@
         "plugin:react/recommended",
         "standard"
     ],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
         "ecmaVersion": 11,
-        "sourceType": "module"
+        "sourceType": "module",
+        "requireConfigFile": false
     },
     "plugins": [
-        "react"
+        "react",
+        "@babel"
     ],
     "rules": {
         "react/jsx-boolean-value": 2,
         "react/jsx-tag-spacing": 2,
         "react/jsx-sort-default-props": 2,
-        "react/jsx-closing-tag-location": 2,
-        "react/jsx-closing-bracket-location": 2
+        "react/jsx-closing-tag-location": 0,
+        "react/jsx-closing-bracket-location": 2,
+        "react/jsx-indent": [
+            0
+        ],
+        "indent": [
+            2,
+            "tab"
+        ],
+        "no-tabs": 0,
+        "no-mixed-spaces-and-tabs": 0
     }
 }
