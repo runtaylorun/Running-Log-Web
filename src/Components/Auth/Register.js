@@ -71,46 +71,46 @@ const Register = () => {
 	}
 
 	return (
-		<div className={classes.page}>
+		<div className={'flex justify-center items-center bg-blue-500 h-screen'}>
 			<div className={classes.card}>
-				<div className={classes.cardHeader}>
-					<h2>Create New Account</h2>
+				<div className={'flex justify-center items-center w-full h-1/6'}>
+					<h2 className={'font-bold text-center text-3xl'}>Create New Account</h2>
 				</div>
-				<div className={classes.cardBody}>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<div className={classes.inputContainer}>
+				<div className={'flex flex-col justify-evenly items-center h-3/4 w-full'}>
+					<form className={'flex flex-col items-center justify-evenly w-full h-full'} onSubmit={handleSubmit(onSubmit)}>
+						<div className={classes.field}>
 							<label>Email</label>
 							<input className={classes.textBox} ref={register(emailRules)} type='text' name='email' />
 							{<p style={{ color: 'red' }}>{errors?.email?.message}</p>}
 						</div>
-						<div className={classes.inputContainer}>
+						<div className={classes.field}>
 							<label>First Name</label>
 							<input className={classes.textBox} ref={register(nameRules)} type='text' name='firstName' />
 							{<p style={{ color: 'red' }}>{errors?.firstName?.message}</p>}
 						</div>
-						<div className={classes.inputContainer}>
+						<div className={classes.field}>
 							<label>Last Name</label>
 							<input className={classes.textBox} ref={register(nameRules)} type='text' name='lastName' />
 							{<p style={{ color: 'red' }}>{errors?.lastName?.message}</p>}
 						</div>
-						<div className={classes.inputContainer}>
+						<div className={classes.field}>
 							<label>Password</label>
 							<input className={classes.textBox} ref={register(passwordRules)} type='password' name='password' />
 							{<p style={{ color: 'red' }}>{errors?.password?.message}</p>}
 						</div>
-						<div className={classes.inputContainer}>
+						<div className={classes.field}>
 							<label>Confirm Password</label>
 							<input className={classes.textBox} ref={register(passwordConfirmationRules)} type='password' name='passwordConfirmation' />
 							{<p style={{ color: 'red' }}>{errors?.passwordConfirmation?.message}</p>}
 						</div>
-						<div className={classes.formSubmitContainer}>
-							<button className={classes.button} type='submit'>Register</button>
+						<div className={'w-1/2'}>
+							<button className={classes.darkButton} type='submit'>Register</button>
 						</div>
 					</form>
 				</div>
-				<div className={classes.cardFooter}>
-					<Link className={classes.link} to='/login'>Already Registered?</Link>
-					<Link className={classes.link} style={{ marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
+				<div className={'flex justify-center w-full'}>
+					<Link className={classes.blackLink} to='/login'>Already Registered?</Link>
+					<Link className={classes.blackLink} style={{ marginLeft: 10 }} to='/forgot'>Forgot Password?</Link>
 				</div>
 			</div>
 		</div>
