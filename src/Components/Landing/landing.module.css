@@ -1,133 +1,17 @@
-.page {
-    height: 100%;
-    background-color: hsl(215, 85%, 60%);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-
-.landingContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 400px;
-    width: 600px;
-    color: white;
-}
-
 .appName {
-    position: absolute;
-    color: white;
-    top: 5px;
-    left: 15px;
-    font-weight: 400;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 0;
+    @apply absolute text-white top-5 left-5 mb-0 text-center font-normal text-xl sm:text-3xl;
 }
 
-.phrase {
-    font-size: 60px;
-    text-align: center;
-    font-weight: 400;
+.whiteLink {
+    @apply text-sm text-white transition-colors
+    sm:text-lg;
 }
 
-.shortStatement {
-    width: 550px;
-    text-align: center;
-    font-size: 18px;
-    margin-top: 5px;
+.transparentBtn {
+    @apply bg-transparent text-white border-white border-2 rounded-lg px-9 py-1 hover:bg-white hover:text-black transition-colors
+    sm:px-10 sm:py-2;
 }
 
-.buttonContainer {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.button {
-    background-color: transparent;
-    border: 2px solid white;
-    padding: 5px 30px 5px 30px;
-    border-radius: 5px;
-    transition: background-color 0.3s
-}
-
-.button .link {
-    color: white
-}
-
-.link {
-    color: white;
-    font-size: 24px;
-    transition: color 0.3s;
-}
-
-.button:hover {
-    background-color: white;
-}
-
-.button:hover a {
-    color: hsl(215, 85%, 60%)
-}
-
-.button:focus {
-    border-color: hsl(215, 90%, 40%);
-
-}
-
-@media (max-width: 550px) {
-
-    .phrase {
-        font-size: 48px;
-        text-align: center;
-        font-weight: 400;
-    }
-    
-    .shortStatement {
-        width: 400px;
-        text-align: center;
-        font-size: 14px;
-        margin-top: 5px;
-    }
-
-    .link {
-        font-size: 20px;
-    }
-
-    .buttonContainer {
-        flex-direction: column;
-        align-items: space-evenly;
-        width: 25%;
-        height: 40%;
-    }
- }
-
- @media (max-width: 380px) {
-    .phrase {
-        font-size: 36px;
-    }
-    
-    .shortStatement {
-        width: 275px;
-        font-size: 12px;
-    }
-
-    .link {
-        font-size: 16px;
-    }
-
-    .buttonContainer {
-        width: 20%;
-    }
-
-    .button {
-        padding: 3px 10px 3px 10px;
-    }
-
-    .appName {
-        font-size: 20px;
-    }
+.transparentBtn:hover a {
+    @apply text-blue-400;
 }
